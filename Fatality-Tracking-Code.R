@@ -3,7 +3,6 @@ library("ggplot2")
 install.packages("RCurl")
 library("RCurl")
 
-df_data <- read.csv("/Users/Ryan/Documents/Fatality Data/Raw Fatality Data.csv")
 urlfile <-("https://raw.githubusercontent.com/dosh-analytics/CFOI-dashboard/refs/heads/main/Raw%20Fatality%20Data.csv?token=GHSAT0AAAAAADHC4JL2LVAH5HEGEYGJFFS22DO7C3Q")
 df_data<-read.csv(urlfile)
 
