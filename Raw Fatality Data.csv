@@ -1,0 +1,593 @@
+class,label,count,year
+Age,16 to 19 years,6,2013
+Age,20 to 24 years,21,2013
+Age,25 to 34 years,69,2013
+Age,35 to 44 years,92,2013
+Age,45 to 54 years,98,2013
+Age,55 to 64 years,75,2013
+Age,65 years and older,35,2013
+Age,16 to 19 years,4,2014
+Age,20 to 24 years,15,2014
+Age,25 to 34 years,56,2014
+Age,35 to 44 years,68,2014
+Age,45 to 54 years,95,2014
+Age,55 to 64 years,68,2014
+Age,65 years and older,38,2014
+Age,16 to 19 years,1,2015
+Age,20 to 24 years,28,2015
+Age,25 to 34 years,74,2015
+Age,35 to 44 years,76,2015
+Age,45 to 54 years,81,2015
+Age,55 to 64 years,80,2015
+Age,65 years and older,46,2015
+Age,16 to 19 years,4,2016
+Age,20 to 24 years,27,2016
+Age,25 to 34 years,65,2016
+Age,35 to 44 years,70,2016
+Age,45 to 54 years,80,2016
+Age,55 to 64 years,82,2016
+Age,65 years and older,46,2016
+Age,16 to 19 years,0,2017
+Age,20 to 24 years,20,2017
+Age,25 to 34 years,51,2017
+Age,35 to 44 years,86,2017
+Age,45 to 54 years,83,2017
+Age,55 to 64 years,89,2017
+Age,65 years and older,46,2017
+Age,16 to 19 years,5,2018
+Age,20 to 24 years,27,2018
+Age,25 to 34 years,97,2018
+Age,35 to 44 years,59,2018
+Age,45 to 54 years,98,2018
+Age,55 to 64 years,85,2018
+Age,65 years and older,50,2018
+Age,16 to 19 years,8,2019
+Age,20 to 24 years,30,2019
+Age,25 to 34 years,70,2019
+Age,35 to 44 years,86,2019
+Age,45 to 54 years,98,2019
+Age,55 to 64 years,101,2019
+Age,65 years and older,58,2019
+Age,16 to 19 years,14,2020
+Age,20 to 24 years,27,2020
+Age,25 to 34 years,84,2020
+Age,35 to 44 years,71,2020
+Age,45 to 54 years,91,2020
+Age,55 to 64 years,108,2020
+Age,65 years and older,67,2020
+Age,16 to 19 years,0,2021
+Age,20 to 24 years,28,2021
+Age,25 to 34 years,75,2021
+Age,35 to 44 years,82,2021
+Age,45 to 54 years,106,2021
+Age,55 to 64 years,106,2021
+Age,65 years and older,55,2021
+Age,16 to 19 years,6,2022
+Age,20 to 24 years,25,2022
+Age,25 to 34 years,101,2022
+Age,35 to 44 years,105,2022
+Age,45 to 54 years,109,2022
+Age,55 to 64 years,109,2022
+Age,65 years and older,49,2022
+Age,16 to 19 years,0,2023
+Age,20 to 24 years,32,2023
+Age,25 to 34 years,85,2023
+Age,35 to 44 years,90,2023
+Age,45 to 54 years,95,2023
+Age,55 to 64 years,82,2023
+Age,65 years and older,52,2023
+Gender,Men,380,2009
+Gender,Women,29,2009
+Gender,Men,299,2010
+Gender,Women,27,2010
+Gender,Men,359,2011
+Gender,Women,31,2011
+Gender,Men,347,2012
+Gender,Women,28,2012
+Gender,Men,363,2013
+Gender,Women,33,2013
+Gender,Men,311,2014
+Gender,Women,33,2014
+Gender,Men,361,2015
+Gender,Women,27,2015
+Gender,Men,349,2016
+Gender,Women,27,2016
+Gender,Men,349,2017
+Gender,Women,27,2017
+Gender,Men,384,2018
+Gender,Women,38,2018
+Gender,Men,414,2019
+Gender,Women,37,2019
+Gender,Men,428,2020
+Gender,Women,35,2020
+Gender,Men,424,2021
+Gender,Women,38,2021
+Gender,Men,469,2022
+Gender,Women,35,2022
+Gender,Men,402,2023
+Gender,Women,37,2023
+Race,Hispanic or Latino,161,2009
+Race,White (Non-Hispanic),176,2009
+Race,Asian,37,2009
+Race,Black or African-American,24,2009
+Race,Native Hawaiian or Pacific Islander,0,2009
+Race,American Indian or Alaskan Native,4,2009
+Race,Other Races or Not Reported,7,2009
+Race,Hispanic or Latino,142,2010
+Race,White (Non-Hispanic),137,2010
+Race,Asian,34,2010
+Race,Black or African-American,10,2010
+Race,Native Hawaiian or Pacific Islander,0,2010
+Race,American Indian or Alaskan Native,3,2010
+Race,Other Races or Not Reported,0,2010
+Race,Hispanic or Latino,154,2011
+Race,White (Non-Hispanic),188,2011
+Race,Asian,32,2011
+Race,Black or African-American,15,2011
+Race,Native Hawaiian or Pacific Islander,0,2011
+Race,American Indian or Alaskan Native,0,2011
+Race,Other Races or Not Reported,0,2011
+Race,Hispanic or Latino,137,2012
+Race,White (Non-Hispanic),180,2012
+Race,Asian,35,2012
+Race,Black or African-American,20,2012
+Race,Native Hawaiian or Pacific Islander,0,2012
+Race,American Indian or Alaskan Native,0,2012
+Race,Other Races or Not Reported,0,2012
+Race,Hispanic or Latino,194,2013
+Race,White (Non-Hispanic),163,2013
+Race,Asian,20,2013
+Race,Black or African-American,16,2013
+Race,Native Hawaiian or Pacific Islander,0,2013
+Race,American Indian or Alaskan Native,0,2013
+Race,Other Races or Not Reported,3,2013
+Race,Hispanic or Latino,130,2014
+Race,White (Non-Hispanic),155,2014
+Race,Asian,30,2014
+Race,Black or African-American,21,2014
+Race,Native Hawaiian or Pacific Islander,3,2014
+Race,American Indian or Alaskan Native,5,2014
+Race,Other Races or Not Reported,0,2014
+Race,Hispanic or Latino,178,2015
+Race,White (Non-Hispanic),167,2015
+Race,Asian,26,2015
+Race,Black or African-American,12,2015
+Race,Native Hawaiian or Pacific Islander,0,2015
+Race,American Indian or Alaskan Native,0,2015
+Race,Other Races or Not Reported,5,2015
+Race,Hispanic or Latino,148,2016
+Race,White (Non-Hispanic),160,2016
+Race,Asian,33,2016
+Race,Black or African-American,25,2016
+Race,Native Hawaiian or Pacific Islander,3,2016
+Race,American Indian or Alaskan Native,4,2016
+Race,Other Races or Not Reported,3,2016
+Race,Hispanic or Latino,173,2017
+Race,White (Non-Hispanic),144,2017
+Race,Asian,31,2017
+Race,Black or African-American,19,2017
+Race,Native Hawaiian or Pacific Islander,5,2017
+Race,American Indian or Alaskan Native,0,2017
+Race,Other Races or Not Reported,4,2017
+Race,Hispanic or Latino,190,2018
+Race,White (Non-Hispanic),163,2018
+Race,Asian,37,2018
+Race,Black or African-American,28,2018
+Race,Native Hawaiian or Pacific Islander,0,2018
+Race,American Indian or Alaskan Native,0,2018
+Race,Other Races or Not Reported,4,2018
+Race,Hispanic or Latino,211,2019
+Race,White (Non-Hispanic),169,2019
+Race,Asian,43,2019
+Race,Black or African-American,20,2019
+Race,Native Hawaiian or Pacific Islander,4,2019
+Race,American Indian or Alaskan Native,0,2019
+Race,Other Races or Not Reported,4,2019
+Race,Hispanic or Latino,214,2020
+Race,White (Non-Hispanic),180,2020
+Race,Asian,31,2020
+Race,Black or African-American,28,2020
+Race,Native Hawaiian or Pacific Islander,0,2020
+Race,American Indian or Alaskan Native,7,2020
+Race,Other Races or Not Reported,3,2020
+Race,Hispanic or Latino,234,2021
+Race,White (Non-Hispanic),142,2021
+Race,Asian,41,2021
+Race,Black or African-American,33,2021
+Race,Native Hawaiian or Pacific Islander,7,2021
+Race,American Indian or Alaskan Native,0,2021
+Race,Other Races or Not Reported,5,2021
+Race,Hispanic or Latino,252,2022
+Race,White (Non-Hispanic),164,2022
+Race,Asian,55,2022
+Race,Black or African-American,25,2022
+Race,Native Hawaiian or Pacific Islander,0,2022
+Race,American Indian or Alaskan Native,0,2022
+Race,Other Races or Not Reported,8,2022
+Race,Hispanic or Latino,210,2023
+Race,White (Non-Hispanic),146,2023
+Race,Asian,52,2023
+Race,Black or African-American,28,2023
+Race,Native Hawaiian or Pacific Islander,0,2023
+Race,American Indian or Alaskan Native,0,2023
+Race,Other Races or Not Reported,0,2023
+Employee_Status,Wage and Salary Workers,340,2009
+Employee_Status,Self-Employed,69,2009
+Employee_Status,Wage and Salary Workers,255,2010
+Employee_Status,Self-Employed,71,2010
+Employee_Status,Wage and Salary Workers,319,2011
+Employee_Status,Self-Employed,71,2011
+Employee_Status,Wage and Salary Workers,302,2012
+Employee_Status,Self-Employed,73,2012
+Employee_Status,Wage and Salary Workers,339,2013
+Employee_Status,Self-Employed,57,2013
+Employee_Status,Wage and Salary Workers,275,2014
+Employee_Status,Self-Employed,69,2014
+Employee_Status,Wage and Salary Workers,329,2015
+Employee_Status,Self-Employed,59,2015
+Employee_Status,Wage and Salary Workers,309,2016
+Employee_Status,Self-Employed,67,2016
+Employee_Status,Wage and Salary Workers,301,2017
+Employee_Status,Self-Employed,75,2017
+Employee_Status,Wage and Salary Workers,350,2018
+Employee_Status,Self-Employed,72,2018
+Employee_Status,Wage and Salary Workers,351,2019
+Employee_Status,Self-Employed,100,2019
+Employee_Status,Wage and Salary Workers,380,2020
+Employee_Status,Self-Employed,83,2020
+Employee_Status,Wage and Salary Workers,379,2021
+Employee_Status,Self-Employed,83,2021
+Employee_Status,Wage and Salary Workers,432,2022
+Employee_Status,Self-Employed,72,2022
+Employee_Status,Wage and Salary Workers,354,2023
+Employee_Status,Self-Employed,85,2023
+Causes,Transportation Incidents,138,2013
+Causes,Assault and Violent Acts,80,2013
+Causes,Contact with Objects or Equipment,61,2013
+Causes,"Falls, Slips and Trips",64,2013
+Causes,Exposure to Harmful Substances,39,2013
+Causes,Fires and Explosions,9,2013
+Causes,Other,5,2013
+Causes,Transportation Incidents,119,2014
+Causes,Assault and Violent Acts,75,2014
+Causes,Contact with Objects or Equipment,38,2014
+Causes,"Falls, Slips and Trips",72,2014
+Causes,Exposure to Harmful Substances,34,2014
+Causes,Fires and Explosions,3,2014
+Causes,Other,3,2014
+Causes,Transportation Incidents,150,2015
+Causes,Assault and Violent Acts,77,2015
+Causes,Contact with Objects or Equipment,39,2015
+Causes,"Falls, Slips and Trips",77,2015
+Causes,Exposure to Harmful Substances,33,2015
+Causes,Fires and Explosions,10,2015
+Causes,Other,2,2015
+Causes,Transportation Incidents,145,2016
+Causes,Assault and Violent Acts,77,2016
+Causes,Contact with Objects or Equipment,58,2016
+Causes,"Falls, Slips and Trips",64,2016
+Causes,Exposure to Harmful Substances,20,2016
+Causes,Fires and Explosions,9,2016
+Causes,Other,3,2016
+Causes,Transportation Incidents,139,2017
+Causes,Assault and Violent Acts,66,2017
+Causes,Contact with Objects or Equipment,52,2017
+Causes,"Falls, Slips and Trips",82,2017
+Causes,Exposure to Harmful Substances,29,2017
+Causes,Fires and Explosions,4,2017
+Causes,Other,4,2017
+Causes,Transportation Incidents,155,2018
+Causes,Assault and Violent Acts,92,2018
+Causes,Contact with Objects or Equipment,59,2018
+Causes,"Falls, Slips and Trips",73,2018
+Causes,Exposure to Harmful Substances,39,2018
+Causes,Fires and Explosions,3,2018
+Causes,Other,1,2018
+Causes,Transportation Incidents,141,2019
+Causes,Assault and Violent Acts,94,2019
+Causes,Contact with Objects or Equipment,55,2019
+Causes,"Falls, Slips and Trips",88,2019
+Causes,Exposure to Harmful Substances,66,2019
+Causes,Fires and Explosions,0,2019
+Causes,Other,7,2019
+Causes,Transportation Incidents,122,2020
+Causes,Assault and Violent Acts,97,2020
+Causes,Contact with Objects or Equipment,52,2020
+Causes,"Falls, Slips and Trips",99,2020
+Causes,Exposure to Harmful Substances,85,2020
+Causes,Fires and Explosions,5,2020
+Causes,Other,3,2020
+Causes,Transportation Incidents,142,2021
+Causes,Assault and Violent Acts,87,2021
+Causes,Contact with Objects or Equipment,44,2021
+Causes,"Falls, Slips and Trips",78,2021
+Causes,Exposure to Harmful Substances,103,2021
+Causes,Fires and Explosions,0,2021
+Causes,Other,8,2021
+Causes,Transportation Incidents,133,2022
+Causes,Assault and Violent Acts,97,2022
+Causes,Contact with Objects or Equipment,55,2022
+Causes,"Falls, Slips and Trips",79,2022
+Causes,Exposure to Harmful Substances,132,2022
+Causes,Fires and Explosions,8,2022
+Causes,Other,0,2022
+Causes,Transportation Incidents,108,2023
+Causes,Assault and Violent Acts,95,2023
+Causes,Contact with Objects or Equipment,49,2023
+Causes,"Falls, Slips and Trips",79,2023
+Causes,Exposure to Harmful Substances,106,2023
+Causes,Fires and Explosions,0,2023
+Causes,Other,0,2023
+Occupation,Transportation and Material Moving,108,2013
+Occupation,Construction and Extraction,64,2013
+Occupation,"Farming, Fishing, and Forestry",25,2013
+Occupation,Building and Grounds Cleaning/Maintenance,36,2013
+Occupation,"Installation, Maintenance, and Repair/Production",27,2013
+Occupation,Professional and Related,20,2013
+Occupation,Protective Services,26,2013
+Occupation,Other Occupations,90,2013
+Occupation,Transportation and Material Moving,86,2014
+Occupation,Construction and Extraction,49,2014
+Occupation,"Farming, Fishing, and Forestry",20,2014
+Occupation,Building and Grounds Cleaning/Maintenance,38,2014
+Occupation,"Installation, Maintenance, and Repair/Production",26,2014
+Occupation,Professional and Related,26,2014
+Occupation,Protective Services,24,2014
+Occupation,Other Occupations,75,2014
+Occupation,Transportation and Material Moving,81,2015
+Occupation,Construction and Extraction,69,2015
+Occupation,"Farming, Fishing, and Forestry",46,2015
+Occupation,Building and Grounds Cleaning/Maintenance,29,2015
+Occupation,"Installation, Maintenance, and Repair/Production",25,2015
+Occupation,Professional and Related,38,2015
+Occupation,Protective Services,18,2015
+Occupation,Other Occupations,82,2015
+Occupation,Transportation and Material Moving,109,2016
+Occupation,Construction and Extraction,54,2016
+Occupation,"Farming, Fishing, and Forestry",38,2016
+Occupation,Building and Grounds Cleaning/Maintenance,19,2016
+Occupation,"Installation, Maintenance, and Repair/Production",40,2016
+Occupation,Professional and Related,26,2016
+Occupation,Protective Services,18,2016
+Occupation,Other Occupations,72,2016
+Occupation,Transportation and Material Moving,97,2017
+Occupation,Construction and Extraction,71,2017
+Occupation,"Farming, Fishing, and Forestry",28,2017
+Occupation,Building and Grounds Cleaning/Maintenance,28,2017
+Occupation,"Installation, Maintenance, and Repair/Production",25,2017
+Occupation,Professional and Related,18,2017
+Occupation,Protective Services,30,2017
+Occupation,Other Occupations,79,2017
+Occupation,Transportation and Material Moving,99,2018
+Occupation,Construction and Extraction,79,2018
+Occupation,"Farming, Fishing, and Forestry",21,2018
+Occupation,Building and Grounds Cleaning/Maintenance,21,2018
+Occupation,"Installation, Maintenance, and Repair/Production",30,2018
+Occupation,Professional and Related,24,2018
+Occupation,Protective Services,31,2018
+Occupation,Other Occupations,117,2018
+Occupation,Transportation and Material Moving,115,2019
+Occupation,Construction and Extraction,75,2019
+Occupation,"Farming, Fishing, and Forestry",37,2019
+Occupation,Building and Grounds Cleaning/Maintenance,34,2019
+Occupation,"Installation, Maintenance, and Repair/Production",36,2019
+Occupation,Professional and Related,0,2019
+Occupation,Protective Services,34,2019
+Occupation,Other Occupations,0,2019
+Occupation,Transportation and Material Moving,104,2020
+Occupation,Construction and Extraction,90,2020
+Occupation,"Farming, Fishing, and Forestry",25,2020
+Occupation,Building and Grounds Cleaning/Maintenance,44,2020
+Occupation,"Installation, Maintenance, and Repair/Production",44,2020
+Occupation,Professional and Related,97,2020
+Occupation,Protective Services,30,2020
+Occupation,Other Occupations,29,2020
+Occupation,Transportation and Material Moving,112,2021
+Occupation,Construction and Extraction,81,2021
+Occupation,"Farming, Fishing, and Forestry",29,2021
+Occupation,Building and Grounds Cleaning/Maintenance,38,2021
+Occupation,"Installation, Maintenance, and Repair/Production",70,2021
+Occupation,Professional and Related,82,2021
+Occupation,Protective Services,35,2021
+Occupation,Other Occupations,15,2021
+Occupation,Transportation and Material Moving,132,2022
+Occupation,Construction and Extraction,80,2022
+Occupation,"Farming, Fishing, and Forestry",41,2022
+Occupation,Building and Grounds Cleaning/Maintenance,48,2022
+Occupation,"Installation, Maintenance, and Repair/Production",56,2022
+Occupation,Professional and Related,91,2022
+Occupation,Protective Services,35,2022
+Occupation,Other Occupations,21,2022
+Occupation,Transportation and Material Moving,105,2023
+Occupation,Construction and Extraction,77,2023
+Occupation,"Farming, Fishing, and Forestry",36,2023
+Occupation,Building and Grounds Cleaning/Maintenance,40,2023
+Occupation,"Installation, Maintenance, and Repair/Production",39,2023
+Occupation,Professional and Related,79,2023
+Occupation,Protective Services,30,2023
+Occupation,Other Occupations,33,2023
+Industry,"Trade, Transportation, and Utilities",119,2013
+Industry,Construction,61,2013
+Industry,Professional and Business Services,50,2013
+Industry,Government,46,2013
+Industry,Agriculture/Natural Resources,33,2013
+Industry,Other Non-Government Sectors,20,2013
+Industry,Manufacturing,35,2013
+Industry,Leisure and Hospitality,19,2013
+Industry,Educational and Health Services,13,2013
+Industry,Unclassified,0,2013
+Industry,"Trade, Transportation, and Utilities",92,2014
+Industry,Construction,49,2014
+Industry,Professional and Business Services,55,2014
+Industry,Government,38,2014
+Industry,Agriculture/Natural Resources,28,2014
+Industry,Other Non-Government Sectors,32,2014
+Industry,Manufacturing,20,2014
+Industry,Leisure and Hospitality,15,2014
+Industry,Educational and Health Services,15,2014
+Industry,Unclassified,0,2014
+Industry,"Trade, Transportation, and Utilities",71,2015
+Industry,Construction,75,2015
+Industry,Professional and Business Services,54,2015
+Industry,Government,38,2015
+Industry,Agriculture/Natural Resources,58,2015
+Industry,Other Non-Government Sectors,28,2015
+Industry,Manufacturing,18,2015
+Industry,Leisure and Hospitality,22,2015
+Industry,Educational and Health Services,24,2015
+Industry,Unclassified,0,2015
+Industry,"Trade, Transportation, and Utilities",116,2016
+Industry,Construction,55,2016
+Industry,Professional and Business Services,37,2016
+Industry,Government,39,2016
+Industry,Agriculture/Natural Resources,38,2016
+Industry,Other Non-Government Sectors,0,2016
+Industry,Manufacturing,19,2016
+Industry,Leisure and Hospitality,26,2016
+Industry,Educational and Health Services,12,2016
+Industry,Unclassified,0,2016
+Industry,"Trade, Transportation, and Utilities",98,2017
+Industry,Construction,69,2017
+Industry,Professional and Business Services,67,2017
+Industry,Government,39,2017
+Industry,Agriculture/Natural Resources,39,2017
+Industry,Other Non-Government Sectors,15,2017
+Industry,Manufacturing,24,2017
+Industry,Leisure and Hospitality,12,2017
+Industry,Educational and Health Services,10,2017
+Industry,Unclassified,0,2017
+Industry,"Trade, Transportation, and Utilities",101,2018
+Industry,Construction,71,2018
+Industry,Professional and Business Services,70,2018
+Industry,Government,57,2018
+Industry,Agriculture/Natural Resources,35,2018
+Industry,Other Non-Government Sectors,31,2018
+Industry,Manufacturing,20,2018
+Industry,Leisure and Hospitality,24,2018
+Industry,Educational and Health Services,13,2018
+Industry,Unclassified,0,2018
+Industry,"Trade, Transportation, and Utilities",118,2019
+Industry,Construction,84,2019
+Industry,Professional and Business Services,60,2019
+Industry,Government,42,2019
+Industry,Agriculture/Natural Resources,52,2019
+Industry,Other Non-Government Sectors,23,2019
+Industry,Manufacturing,24,2019
+Industry,Leisure and Hospitality,26,2019
+Industry,Educational and Health Services,23,2019
+Industry,Unclassified,0,2019
+Industry,"Trade, Transportation, and Utilities",113,2020
+Industry,Construction,94,2020
+Industry,Professional and Business Services,77,2020
+Industry,Government,45,2020
+Industry,Agriculture/Natural Resources,38,2020
+Industry,Other Non-Government Sectors,31,2020
+Industry,Manufacturing,18,2020
+Industry,Leisure and Hospitality,20,2020
+Industry,Educational and Health Services,27,2020
+Industry,Unclassified,0,2020
+Industry,"Trade, Transportation, and Utilities",110,2021
+Industry,Construction,79,2021
+Industry,Professional and Business Services,56,2021
+Industry,Government,54,2021
+Industry,Agriculture/Natural Resources,39,2021
+Industry,Other Non-Government Sectors,21,2021
+Industry,Manufacturing,32,2021
+Industry,Leisure and Hospitality,26,2021
+Industry,Educational and Health Services,27,2021
+Industry,Unclassified,18,2021
+Industry,"Trade, Transportation, and Utilities",139,2022
+Industry,Construction,79,2022
+Industry,Professional and Business Services,75,2022
+Industry,Government,46,2022
+Industry,Agriculture/Natural Resources,47,2022
+Industry,Other Non-Government Sectors,21,2022
+Industry,Manufacturing,35,2022
+Industry,Leisure and Hospitality,34,2022
+Industry,Educational and Health Services,28,2022
+Industry,Unclassified,0,2022
+Industry,"Trade, Transportation, and Utilities",116,2023
+Industry,Construction,78,2023
+Industry,Professional and Business Services,64,2023
+Industry,Government,34,2023
+Industry,Agriculture/Natural Resources,45,2023
+Industry,Other Non-Government Sectors,20,2023
+Industry,Manufacturing,21,2023
+Industry,Leisure and Hospitality,28,2023
+Industry,Educational and Health Services,15,2023
+Industry,Unclassified,18,2023
+Totals,Total Fatalities,602,1999
+Rates,"California Rate per 100,000",3.6,1999
+Rates,"US Rate per 100,000",4.5,1999
+Totals,Total.Fatalities,553,2000
+Rates,"California Rate per 100,000",3.3,2000
+Rates,"US Rate per 100,000",4.3,2000
+Totals,Total.Fatalities,515,2001
+Rates,"California Rate per 100,000",3,2001
+Rates,"US Rate per 100,000",4.3,2001
+Totals,Total.Fatalities,478,2002
+Rates,"California Rate per 100,000",2.8,2002
+Rates,"US Rate per 100,000",4,2002
+Totals,Total.Fatalities,459,2003
+Rates,"California Rate per 100,000",2.7,2003
+Rates,"US Rate per 100,000",4,2003
+Totals,Total.Fatalities,467,2004
+Rates,"California Rate per 100,000",2.4,2004
+Rates,"US Rate per 100,000",4.1,2004
+Totals,Total.Fatalities,465,2005
+Rates,"California Rate per 100,000",2.7,2005
+Rates,"US Rate per 100,000",4,2005
+Totals,Total.Fatalities,537,2006
+Rates,"California Rate per 100,000",3.1,2006
+Rates,"US Rate per 100,000",4,2006
+Totals,Total.Fatalities,461,2007
+Rates,"California Rate per 100,000",2.7,2007
+Rates,"US Rate per 100,000",3.8,2007
+Totals,Total.Fatalities,465,2008
+Rates,"California Rate per 100,000",2.8,2008
+Rates,"US Rate per 100,000",3.7,2008
+Totals,Total.Fatalities,409,2009
+Rates,"California Rate per 100,000",2.6,2009
+Rates,"US Rate per 100,000",3.5,2009
+Totals,Total.Fatalities,326,2010
+Rates,"California Rate per 100,000",2.1,2010
+Rates,"US Rate per 100,000",3.6,2010
+Totals,Total.Fatalities,390,2011
+Rates,"California Rate per 100,000",2.4,2011
+Rates,"US Rate per 100,000",3.5,2011
+Totals,Total.Fatalities,375,2012
+Rates,"California Rate per 100,000",2.3,2012
+Rates,"US Rate per 100,000",3.4,2012
+Totals,Total.Fatalities,396,2013
+Rates,"California Rate per 100,000",2.4,2013
+Rates,"US Rate per 100,000",3.3,2013
+Totals,Total.Fatalities,344,2014
+Rates,"California Rate per 100,000",2,2014
+Rates,"US Rate per 100,000",3.4,2014
+Totals,Total.Fatalities,388,2015
+Rates,"California Rate per 100,000",2.2,2015
+Rates,"US Rate per 100,000",3.4,2015
+Totals,Total.Fatalities,376,2016
+Rates,"California Rate per 100,000",2.2,2016
+Rates,"US Rate per 100,000",3.6,2016
+Totals,Total.Fatalities,376,2017
+Rates,"California Rate per 100,000",2.2,2017
+Rates,"US Rate per 100,000",3.5,2017
+Totals,Total.Fatalities,422,2018
+Rates,"California Rate per 100,000",2.3,2018
+Rates,"US Rate per 100,000",3.5,2018
+Totals,Total.Fatalities,451,2019
+Rates,"California Rate per 100,000",2.5,2019
+Rates,"US Rate per 100,000",3.5,2019
+Totals,Total.Fatalities,463,2020
+Rates,"California Rate per 100,000",2.9,2020
+Rates,"US Rate per 100,000",3.4,2020
+Totals,Total.Fatalities,462,2021
+Rates,"California Rate per 100,000",2.8,2021
+Rates,"US Rate per 100,000",3.6,2021
+Totals,Total.Fatalities,504,2022
+Rates,"California Rate per 100,000",2.9,2022
+Rates,"US Rate per 100,000",3.7,2022
+Totals,Total.Fatalities,439,2023
+Rates,"California Rate per 100,000",2.5,2023
+Rates,"US Rate per 100,000",3.5,2023
