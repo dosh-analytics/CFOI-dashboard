@@ -6,10 +6,37 @@ library("RCurl")
 urlfile <-("https://raw.githubusercontent.com/dosh-analytics/CFOI-dashboard/refs/heads/main/Raw%20Fatality%20Data.csv?token=GHSAT0AAAAAADHC4JL2LVAH5HEGEYGJFFS22DO7C3Q")
 df_data<-read.csv(urlfile)
 
-
-## Subset Total Death Data
+## Subset All Data
 
 df_totals <- subset(df_data, class=="Totals")
+
+df_rate <- subset(df_data, class=='Rates')
+
+df_gender <- subset(df_data, class=='Gender')
+df_gender$label <- factor(df_gender$label, levels=c('Women', 'Men'))
+
+df_age <- subset(df_data, class=='Age')
+df_age_current <-subset(df_age, year=="2023")
+df_age_previous <-subset(df_age, year=="2022")
+
+df_race <-subset(df_data, class=="Race")
+df_race_current <-subset(df_race, year=="2023")
+df_race_previous <-subset(df_race, year=="2022")
+
+df_employment <-subset(df_data, class=="Employee_Status")
+df_employment_current <-subset(df_employment, year=="2023")
+
+df_causes <-subset(df_data, class=="Causes")
+df_causes_current <-subset(df_causes, year=="2023")
+df_causes_previous <-subset(df_causes, year=="2022")
+
+df_industry <-subset(df_data, class=="Industry")
+df_industry_current <-subset(df_industry, year=="2023")
+df_industry_previous <-subset(df_industry, year=="2022")
+
+df_occupation <-subset(df_data, class=="Occupation")
+df_occupation_current <-subset(df_occupation, year=="2023")
+df_occupation_previous <-subset(df_occupation, year=="2022")
 
 ## Figure 1 -- California Fatal Occupational Injuries Within the Scope of CFOI
 
@@ -24,10 +51,6 @@ ggplot(data=df_totals, aes(x=year, y=count)) +
     y = "Fatal Occupational Injuries",
     title = "California Fatal Occupational Injuries Within the Scope of CFOI (1999-2023)"
   )
-
-## Subset Rate Data
-
-df_rate <- subset(df_data, class=='Rates')
 
 ## Figure 2 -- California and U.S. Occupational Fatality Rate (per 100,000 workers)
 
@@ -48,11 +71,6 @@ ggplot(data=df_rate, aes(x=year, y=count, group=label, color=label, shape = labe
   scale_color_manual(values=c('#25408F', '#B94700')) + 
   theme(plot.title = element_text(hjust = 0.5))
 
-## Subset Gender Data
-
-df_gender <- subset(df_data, class=='Gender')
-df_gender$label <- factor(df_gender$label, levels=c('Women', 'Men'))
-
 ## Figure 3 -- Gender
 
 ggplot(df_gender, aes(x = year, y = count, fill = label)) + 
@@ -69,13 +87,7 @@ ggplot(df_gender, aes(x = year, y = count, fill = label)) +
     fill = 'Gender'
   )
 
-## Subset Age Data
-
-df_age <- subset(df_data, class=='Age')
-
 ## Figure 4a -- Current Year Age Pie Chart
-
-df_age_current <-subset(df_age, year=="2023")
 
 ggplot(df_age_current, aes(x = "", y = count, fill = label)) +
   geom_col() +
@@ -89,8 +101,6 @@ ggplot(df_age_current, aes(x = "", y = count, fill = label)) +
 
 ## Figure 4b -- Previous Year Age Pie Chart
 
-df_age_previous <-subset(df_age, year=="2022")
-
 ggplot(df_age_previous, aes(x = "", y = count, fill = label)) +
   geom_col() +
   coord_polar(theta = "y") +
@@ -100,10 +110,6 @@ ggplot(df_age_previous, aes(x = "", y = count, fill = label)) +
   theme(plot.title = element_text(hjust = 0.5)) + 
   geom_label(aes(label = count),
              position = position_stack(vjust = 0.5), color = "black", show.legend = FALSE) 
-
-## Subset Race Data
-
-df_race <-subset(df_data, class=="Race")
 
 ## Figure 5a -- by Race/Ethnicity Over Time
 
@@ -126,9 +132,7 @@ ggplot(df_race,aes(x = year, y = count, group = label, color = label, pattern = 
 
 ## Figure 5b1 -- Race Pie Chart Current Year
 
-df_race_current <-subset(df_race, year=="2023")
-
-ggplot(race_data_2023, aes(x = "", y = count, fill = label)) +
+ggplot(df_race_current, aes(x = "", y = count, fill = label)) +
   geom_col() +
   coord_polar(theta = "y") +
   scale_fill_manual('Race or Ethnic Origin', values = c("#9D9FA2", "#9098CF", "#F2EEDD", "#00A8E0", "#6ECAC8", "#94C83D", "#FFD41C", "pink")) +  
@@ -138,10 +142,7 @@ ggplot(race_data_2023, aes(x = "", y = count, fill = label)) +
   geom_label(aes(label = count),
              position = position_stack(vjust = 0.5), color = "black", show.legend = FALSE) 
 
-
 ## Figure 5b2 -- Race Pie Chart Previous Year
-
-df_race_previous <-subset(df_race, year=="2022")
 
 ggplot(df_race_previous, aes(x = "", y = count, fill = label)) +
   geom_col() +
@@ -153,14 +154,7 @@ ggplot(df_race_previous, aes(x = "", y = count, fill = label)) +
   geom_label(aes(label = count),
              position = position_stack(vjust = 0.5), color = "black", show.legend = FALSE) 
 
-## Subset Employment Data 
-
-df_employment <-subset(df_data, class=="Employee_Status")
-
-
 ## Figure 6a -- Current Year Percentage Pie Chart -- NOT QUITE RIGHT, FIX MATH
-
-df_employment_current <-subset(df_employment, year=="2023")
 
 ggplot(df_employment_current, aes(x = "", y = count, fill = label)) +
   geom_col() +   
@@ -178,25 +172,138 @@ ggplot(df_employment_current, aes(x = "", y = count, fill = label)) +
 
 #Figure 6b -- Employment Status Over Time Stacked Bar Chart
 
+ggplot(df_employment, aes(x = year, y = count, fill = label)) + 
+  geom_bar(stat = "identity", position="stack") +
+  geom_label(aes(label = count, size = 6), position = position_stack(vjust = 0.5), show.legend = FALSE) +
+  scale_y_continuous(limits = c(0,550), breaks=c(0, 100, 200, 300, 400, 500, 500)) + 
+  scale_x_continuous(breaks=2009:2023) + 
+  scale_fill_manual(values=c("#FFD41C", "#6ECAC8")) + 
+  theme(plot.title = element_text(hjust = 0.5)) +
+  labs(
+    x = "Year",
+    y = "Fatal Occupational Injuries",
+    title = "California Fatal Occupational Injuries by Employment Status",
+    fill = 'Employment Status'
+  )
 
 
+## Figure 7a -- Fatal Injuries by Event All Time
 
+ggplot(df_causes,aes(x = year, y = count, group = label, color = label, pattern = label)) + 
+  geom_line(linewidth=1) + 
+  geom_point(size=3) + 
+  theme(plot.title = element_text(hjust = 0.5)) +
+  scale_x_continuous(breaks=2013:2023) + 
+  labs(
+    x = "Year",
+    y = "Fatal Occupational Injuries",
+    color = "",
+    title = "California Fatal Occupational Injuries Within the Scope of CFOI, by Event (2013-2023)"
+  ) + 
+  theme(legend.position="bottom")
 
+## Figure 7c1 -- Fatal Injuries by Event, Current Year
 
-
-
-
-
-
-## Figures 11x -- Occupation Data
-
-occupation_data <-subset(df_data, class=="Occupation" & year==2023)
-
-ggplot(occupation_data,aes(x = "", y = count, fill = label )) +
+ggplot(df_causes_current, aes(x = "", y = count, fill = label)) +
   geom_col() +
   coord_polar(theta = "y") +
+  scale_fill_manual('Causes of Fatal Events', values = c("#9D9FA2", "#9098CF", "#F2EEDD", "#00A8E0", "#6ECAC8", "#94C83D", "#FFD41C", "pink")) +  
   theme_void() + 
-  scale_fill_manual('Occupation Groups', values = c("#9D9FA2", "#9098CF", "#F2EEDD", "#00A8E0", "#6ECAC8", "#94C83D", "#FFD41C", "pink")) +  
-  ggtitle("Fatal Occupational Injuries by Occupation 2023") +
+  ggtitle("Fatal Occupational Injuries by Event 2023")  +
+  theme(plot.title = element_text(hjust = 0.5)) + 
   geom_label(aes(label = count),
-             position = position_stack(vjust = 0.5), show.legend = FALSE) 
+             position = position_stack(vjust = 0.5), color = "black", show.legend = FALSE) 
+
+## Figure 7c2 -- Fatal Injuries by Event, Previous Year
+
+ggplot(df_causes_previous, aes(x = "", y = count, fill = label)) +
+  geom_col() +
+  coord_polar(theta = "y") +
+  scale_fill_manual('Causes of Fatal Events', values = c("#9D9FA2", "#9098CF", "#F2EEDD", "#00A8E0", "#6ECAC8", "#94C83D", "#FFD41C", "pink")) +  
+  theme_void() + 
+  ggtitle("Fatal Occupational Injuries by Event 2022")  +
+  theme(plot.title = element_text(hjust = 0.5)) + 
+  geom_label(aes(label = count),
+             position = position_stack(vjust = 0.5), color = "black", show.legend = FALSE) 
+
+## Figure 9a -- Fatal Injuries by Industry All Time
+
+ggplot(df_industry,aes(x = year, y = count, group = label, color = label, pattern = label)) + 
+  geom_line(linewidth=1) + 
+  geom_point(size=3) + 
+  theme(plot.title = element_text(hjust = 0.5)) +
+  scale_x_continuous(breaks=2013:2023) + 
+  labs(
+    x = "Year",
+    y = "Fatal Occupational Injuries",
+    color = "",
+    title = "California Fatal Occupational Injuries Within the Scope of CFOI, by Industry (2013-2023)"
+  ) + 
+  theme(legend.position="bottom")
+
+## Figure 9b1 -- Fatal Injuries by Industry, Current Year
+
+ggplot(df_industry_current, aes(x = "", y = count, fill = label)) +
+  geom_col() +
+  coord_polar(theta = "y") +
+  scale_fill_manual('Industry', values = c("#9D9FA2", "#9098CF", "#F2EEDD", "#00A8E0", "#6ECAC8", "#94C83D", "#FFD41C", "pink", "red","brown")) +  
+  theme_void() + 
+  ggtitle("Fatal Occupational Injuries by Industry 2023")  +
+  theme(plot.title = element_text(hjust = 0.5)) + 
+  geom_label(aes(label = count),
+             position = position_stack(vjust = 0.5), color = "black", show.legend = FALSE) 
+
+## Figure 9b2 -- Fatal Injuries by Industry, Previous Year
+
+ggplot(df_industry_previous, aes(x = "", y = count, fill = label)) +
+  geom_col() +
+  coord_polar(theta = "y") +
+  scale_fill_manual('Industry', values = c("#9D9FA2", "#9098CF", "#F2EEDD", "#00A8E0", "#6ECAC8", "#94C83D", "#FFD41C", "pink", "red","brown")) +  
+  theme_void() + 
+  ggtitle("Fatal Occupational Injuries by Industry 2022")  +
+  theme(plot.title = element_text(hjust = 0.5)) + 
+  geom_label(aes(label = count),
+             position = position_stack(vjust = 0.5), color = "black", show.legend = FALSE) 
+
+## Figure 10 -- Fatal Injuries by Year, All Time, per 100,000 workers
+
+
+
+## Figure 11 -- Occupation Data All Time (NOT PUBLISHED)
+
+ggplot(df_occupation,aes(x = year, y = count, group = label, color = label, pattern = label)) + 
+  geom_line(linewidth=1) + 
+  geom_point(size=3) + 
+  theme(plot.title = element_text(hjust = 0.5)) +
+  scale_x_continuous(breaks=2013:2023) + 
+  labs(
+    x = "Year",
+    y = "Fatal Occupational Injuries",
+    color = "",
+    title = "California Fatal Occupational Injuries Within the Scope of CFOI, by Occupation (2013-2023)"
+  ) + 
+  theme(legend.position="bottom")
+
+## Figure 11a -- Fatal Injuries by Occupation, Current Year
+
+ggplot(df_occupation_current, aes(x = "", y = count, fill = label)) +
+  geom_col() +
+  coord_polar(theta = "y") +
+  scale_fill_manual('Occupation Groups', values = c("#9D9FA2", "#9098CF", "#F2EEDD", "#00A8E0", "#6ECAC8", "#94C83D", "#FFD41C", "pink", "red","brown")) +  
+  theme_void() + 
+  ggtitle("Fatal Occupational Injuries by Occupation 2023")  +
+  theme(plot.title = element_text(hjust = 0.5)) + 
+  geom_label(aes(label = count),
+             position = position_stack(vjust = 0.5), color = "black", show.legend = FALSE) 
+
+## Figure 11b -- Fatal Occupational Injuries by Occupation, Previous Year
+
+ggplot(df_occupation_previous, aes(x = "", y = count, fill = label)) +
+  geom_col() +
+  coord_polar(theta = "y") +
+  scale_fill_manual('Occupation Groups', values = c("#9D9FA2", "#9098CF", "#F2EEDD", "#00A8E0", "#6ECAC8", "#94C83D", "#FFD41C", "pink", "red","brown")) +  
+  theme_void() + 
+  ggtitle("Fatal Occupational Injuries by Occupation 2022")  +
+  theme(plot.title = element_text(hjust = 0.5)) + 
+  geom_label(aes(label = count),
+             position = position_stack(vjust = 0.5), color = "black", show.legend = FALSE) 
