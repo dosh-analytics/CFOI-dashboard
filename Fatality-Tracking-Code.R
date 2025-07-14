@@ -2,6 +2,16 @@ install.packages("ggplot2")
 library("ggplot2")
 install.packages("RCurl")
 library("RCurl")
+library("shiny")
+install.packages("bslib")
+library("bslib")
+
+## R-Shiny Coding
+
+
+
+
+## Fatality Data 
 
 urlfile <-("https://raw.githubusercontent.com/dosh-analytics/CFOI-dashboard/refs/heads/main/Raw%20Fatality%20Data.csv?token=GHSAT0AAAAAADHC4JL2LVAH5HEGEYGJFFS22DO7C3Q")
 df_data<-read.csv(urlfile)
@@ -40,7 +50,7 @@ df_occupation_previous <-subset(df_occupation, year=="2022")
 
 ## Figure 1 -- California Fatal Occupational Injuries Within the Scope of CFOI
 
-ggplot(data=df_totals, aes(x=year, y=count)) +
+figure1 <- ggplot(data=df_totals, aes(x=year, y=count)) +
   scale_x_continuous(breaks=1999:2023) +
   geom_bar(stat="identity", fill="#9098CF") +
   geom_line(linewidth=1, color = '#B94700') + 
@@ -54,7 +64,7 @@ ggplot(data=df_totals, aes(x=year, y=count)) +
 
 ## Figure 2 -- California and U.S. Occupational Fatality Rate (per 100,000 workers)
 
-ggplot(data=df_rate, aes(x=year, y=count, group=label, color=label, shape = label)) +
+figure2 <- ggplot(data=df_rate, aes(x=year, y=count, group=label, color=label, shape = label)) +
   geom_line() + 
   geom_point(size = 3) + 
   guides(color = guide_legend(override.aes = list(linetype = c('solid', 'solid'), shape = c(15, 16))), shape = 'none') + 
@@ -73,7 +83,7 @@ ggplot(data=df_rate, aes(x=year, y=count, group=label, color=label, shape = labe
 
 ## Figure 3 -- Gender
 
-ggplot(df_gender, aes(x = year, y = count, fill = label)) + 
+figure3 <- ggplot(df_gender, aes(x = year, y = count, fill = label)) + 
   geom_bar(stat = "identity", position="stack") +
   geom_label(aes(label = count, size = 6), position = position_stack(vjust = 0.5), show.legend = FALSE) +
   scale_y_continuous(limits = c(0,550), breaks=c(0, 100, 200, 300, 400, 500, 500)) + 
@@ -89,7 +99,7 @@ ggplot(df_gender, aes(x = year, y = count, fill = label)) +
 
 ## Figure 4a -- Current Year Age Pie Chart
 
-ggplot(df_age_current, aes(x = "", y = count, fill = label)) +
+figure4a <- ggplot(df_age_current, aes(x = "", y = count, fill = label)) +
   geom_col() +
   coord_polar(theta = "y") +
   scale_fill_manual('Occupation Groups', values = c("#9D9FA2", "#9098CF", "#F2EEDD", "#00A8E0", "#6ECAC8", "#94C83D", "#FFD41C", "pink")) +  
@@ -101,7 +111,7 @@ ggplot(df_age_current, aes(x = "", y = count, fill = label)) +
 
 ## Figure 4b -- Previous Year Age Pie Chart
 
-ggplot(df_age_previous, aes(x = "", y = count, fill = label)) +
+figure4b <- ggplot(df_age_previous, aes(x = "", y = count, fill = label)) +
   geom_col() +
   coord_polar(theta = "y") +
   scale_fill_manual('Occupation Groups', values = c("#9D9FA2", "#9098CF", "#F2EEDD", "#00A8E0", "#6ECAC8", "#94C83D", "#FFD41C", "pink")) +  
@@ -116,7 +126,7 @@ ggplot(df_age_previous, aes(x = "", y = count, fill = label)) +
 install.packages("ggrepel")                     # Install ggrepel package
 library("ggrepel")                              # Load ggrepel
 
-ggplot(df_race,aes(x = year, y = count, group = label, color = label, pattern = label)) + 
+figure5a <- ggplot(df_race,aes(x = year, y = count, group = label, color = label, pattern = label)) + 
   geom_line(linewidth=1) + 
   geom_label_repel(aes(label = label), max.overlaps = 1, nudge_x = 1, na.rm = TRUE) + 
   geom_point(size=3) + 
