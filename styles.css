@@ -1,0 +1,17 @@
+/* styles.css */
+
+.heading {
+    font-family: 'Century Gothic Bold'; font-weight:700;
+}
+
+.paragraph {
+    font-family: 'Calibri'; font-weight:400
+}
+
+.numbers {
+    font-family: 'Calibri Bold'; font-weight:700;
+}
+
+.source {
+    font-family: 'Calibri Italic'; font-weight:500;
+}
