@@ -5,7 +5,7 @@ library(shiny)
 library(shinydashboard)
 library(gitcreds)
 
-3
+
 
 ## Create Header
 
@@ -17,7 +17,8 @@ header <-
 
 header$children[[2]]$children[[2]] <- header$children[[2]]$children[[1]]
 header$children[[2]]$children[[1]] <- tags$a(href='https://www.dir.ca.gov/dosh/',
-                                             tags$image(src=)
+                                             tags$image(src='CFOI-dashboard/Asset Files/logos
+                                                        /Cal-OSHA_Division-of-Occupational-Safety-and-Health-Logo_Full-Color-RGB_2025.PNG')
                                              )
 
 ## Create Sidebar
