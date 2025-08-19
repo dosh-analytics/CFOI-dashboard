@@ -1,19 +1,16 @@
 install.packages("ggplot2")
-library("ggplot2")
+install.packages("ggrepel")
 install.packages("RCurl")
+install.packages("bslib")
+library("ggplot2")
 library("RCurl")
 library("shiny")
-install.packages("bslib")
 library("bslib")
-
-## R-Shiny Coding
-
-
-
+library("ggrepel")
 
 ## Fatality Data 
 
-urlfile <-("https://raw.githubusercontent.com/dosh-analytics/CFOI-dashboard/refs/heads/main/Raw%20Fatality%20Data.csv?token=GHSAT0AAAAAADHC4JL2LVAH5HEGEYGJFFS22DO7C3Q")
+urlfile <-("https://raw.githubusercontent.com/dosh-analytics/CFOI-dashboard/refs/heads/main/Raw_Fatality_Data.csv?token=GHSAT0AAAAAADJDWGIKO5QAABD24RGMN6FA2FDTBUQ")
 df_data<-read.csv(urlfile)
 
 ## Subset All Data
@@ -123,8 +120,7 @@ figure4b <- ggplot(df_age_previous, aes(x = "", y = count, fill = label)) +
 
 ## Figure 5a -- by Race/Ethnicity Over Time
 
-install.packages("ggrepel")                     # Install ggrepel package
-library("ggrepel")                              # Load ggrepel
+
 
 figure5a <- ggplot(df_race,aes(x = year, y = count, group = label, color = label, pattern = label)) + 
   geom_line(linewidth=1) + 
