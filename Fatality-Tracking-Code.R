@@ -11,7 +11,7 @@ library("ggrepel")
 ## Fatality Data 
 
 urlfile <-("https://raw.githubusercontent.com/dosh-analytics/CFOI-dashboard/refs/heads/main/Raw_Fatality_Data.csv?token=GHSAT0AAAAAADJDWGIKO5QAABD24RGMN6FA2FDTBUQ")
-df_data<-read.csv(urlfile)
+df_data<-read.csv('/Users/ryan/Documents/GitHub/CFOI-dashboard/Raw_Fatality_Data.csv')
 
 ## Subset All Data
 
@@ -20,30 +20,30 @@ df_totals <- subset(df_data, class=="Totals")
 df_rate <- subset(df_data, class=='Rates')
 
 df_gender <- subset(df_data, class=='Gender')
-df_gender$label <- factor(df_gender$label, levels=c('Women', 'Men'))
+df_gender$Label <- factor(df_gender$Label, levels=c('Women', 'Men'))
 
 df_age <- subset(df_data, class=='Age')
-df_age_current <-subset(df_age, year=="2023")
-df_age_previous <-subset(df_age, year=="2022")
+df_age_current <-subset(df_age, Year=="2023")
+df_age_previous <-subset(df_age, Year=="2022")
 
 df_race <-subset(df_data, class=="Race")
-df_race_current <-subset(df_race, year=="2023")
-df_race_previous <-subset(df_race, year=="2022")
+df_race_current <-subset(df_race, Year=="2023")
+df_race_previous <-subset(df_race, Year=="2022")
 
 df_employment <-subset(df_data, class=="Employee_Status")
-df_employment_current <-subset(df_employment, year=="2023")
+df_employment_current <-subset(df_employment, Year=="2023")
 
 df_causes <-subset(df_data, class=="Causes")
-df_causes_current <-subset(df_causes, year=="2023")
-df_causes_previous <-subset(df_causes, year=="2022")
+df_causes_current <-subset(df_causes, Year=="2023")
+df_causes_previous <-subset(df_causes, Year=="2022")
 
 df_industry <-subset(df_data, class=="Industry")
-df_industry_current <-subset(df_industry, year=="2023")
-df_industry_previous <-subset(df_industry, year=="2022")
+df_industry_current <-subset(df_industry, Year=="2023")
+df_industry_previous <-subset(df_industry, Year=="2022")
 
 df_occupation <-subset(df_data, class=="Occupation")
-df_occupation_current <-subset(df_occupation, year=="2023")
-df_occupation_previous <-subset(df_occupation, year=="2022")
+df_occupation_current <-subset(df_occupation, Year=="2023")
+df_occupation_previous <-subset(df_occupation, Year=="2022")
 
 ## Figure 1 -- California Fatal Occupational Injuries Within the Scope of CFOI
 
