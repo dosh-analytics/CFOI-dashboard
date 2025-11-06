@@ -1,4 +1,4 @@
-class,label,count,year
+class,Label,Count,Year
 Age,16 to 19 years,6,2013
 Age,20 to 24 years,21,2013
 Age,25 to 34 years,69,2013
@@ -371,9 +371,9 @@ Occupation,Construction and Extraction,75,2019
 Occupation,"Farming, Fishing, and Forestry",37,2019
 Occupation,Building and Grounds Cleaning/Maintenance,34,2019
 Occupation,"Installation, Maintenance, and Repair/Production",36,2019
-Occupation,Professional and Related,0,2019
+Occupation,Professional and Related,,2019
 Occupation,Protective Services,34,2019
-Occupation,Other Occupations,0,2019
+Occupation,Other Occupations,,2019
 Occupation,Transportation and Material Moving,104,2020
 Occupation,Construction and Extraction,90,2020
 Occupation,"Farming, Fishing, and Forestry",25,2020
@@ -519,75 +519,75 @@ Industry,Unclassified,18,2023
 Totals,Total Fatalities,602,1999
 Rates,"California Rate per 100,000",3.6,1999
 Rates,"US Rate per 100,000",4.5,1999
-Totals,Total.Fatalities,553,2000
+Totals,Total Fatalities,553,2000
 Rates,"California Rate per 100,000",3.3,2000
 Rates,"US Rate per 100,000",4.3,2000
-Totals,Total.Fatalities,515,2001
+Totals,Total Fatalities,515,2001
 Rates,"California Rate per 100,000",3,2001
 Rates,"US Rate per 100,000",4.3,2001
-Totals,Total.Fatalities,478,2002
+Totals,Total Fatalities,478,2002
 Rates,"California Rate per 100,000",2.8,2002
 Rates,"US Rate per 100,000",4,2002
-Totals,Total.Fatalities,459,2003
+Totals,Total Fatalities,459,2003
 Rates,"California Rate per 100,000",2.7,2003
 Rates,"US Rate per 100,000",4,2003
-Totals,Total.Fatalities,467,2004
+Totals,Total Fatalities,467,2004
 Rates,"California Rate per 100,000",2.4,2004
 Rates,"US Rate per 100,000",4.1,2004
-Totals,Total.Fatalities,465,2005
+Totals,Total Fatalities,465,2005
 Rates,"California Rate per 100,000",2.7,2005
 Rates,"US Rate per 100,000",4,2005
-Totals,Total.Fatalities,537,2006
+Totals,Total Fatalities,537,2006
 Rates,"California Rate per 100,000",3.1,2006
 Rates,"US Rate per 100,000",4,2006
-Totals,Total.Fatalities,461,2007
+Totals,Total Fatalities,461,2007
 Rates,"California Rate per 100,000",2.7,2007
 Rates,"US Rate per 100,000",3.8,2007
-Totals,Total.Fatalities,465,2008
+Totals,Total Fatalities,465,2008
 Rates,"California Rate per 100,000",2.8,2008
 Rates,"US Rate per 100,000",3.7,2008
-Totals,Total.Fatalities,409,2009
+Totals,Total Fatalities,409,2009
 Rates,"California Rate per 100,000",2.6,2009
 Rates,"US Rate per 100,000",3.5,2009
-Totals,Total.Fatalities,326,2010
+Totals,Total Fatalities,326,2010
 Rates,"California Rate per 100,000",2.1,2010
 Rates,"US Rate per 100,000",3.6,2010
-Totals,Total.Fatalities,390,2011
+Totals,Total Fatalities,390,2011
 Rates,"California Rate per 100,000",2.4,2011
 Rates,"US Rate per 100,000",3.5,2011
-Totals,Total.Fatalities,375,2012
+Totals,Total Fatalities,375,2012
 Rates,"California Rate per 100,000",2.3,2012
 Rates,"US Rate per 100,000",3.4,2012
-Totals,Total.Fatalities,396,2013
+Totals,Total Fatalities,396,2013
 Rates,"California Rate per 100,000",2.4,2013
 Rates,"US Rate per 100,000",3.3,2013
-Totals,Total.Fatalities,344,2014
+Totals,Total Fatalities,344,2014
 Rates,"California Rate per 100,000",2,2014
 Rates,"US Rate per 100,000",3.4,2014
-Totals,Total.Fatalities,388,2015
+Totals,Total Fatalities,388,2015
 Rates,"California Rate per 100,000",2.2,2015
 Rates,"US Rate per 100,000",3.4,2015
-Totals,Total.Fatalities,376,2016
+Totals,Total Fatalities,376,2016
 Rates,"California Rate per 100,000",2.2,2016
 Rates,"US Rate per 100,000",3.6,2016
-Totals,Total.Fatalities,376,2017
+Totals,Total Fatalities,376,2017
 Rates,"California Rate per 100,000",2.2,2017
 Rates,"US Rate per 100,000",3.5,2017
-Totals,Total.Fatalities,422,2018
+Totals,Total Fatalities,422,2018
 Rates,"California Rate per 100,000",2.3,2018
 Rates,"US Rate per 100,000",3.5,2018
-Totals,Total.Fatalities,451,2019
+Totals,Total Fatalities,451,2019
 Rates,"California Rate per 100,000",2.5,2019
 Rates,"US Rate per 100,000",3.5,2019
-Totals,Total.Fatalities,463,2020
+Totals,Total Fatalities,463,2020
 Rates,"California Rate per 100,000",2.9,2020
 Rates,"US Rate per 100,000",3.4,2020
-Totals,Total.Fatalities,462,2021
+Totals,Total Fatalities,462,2021
 Rates,"California Rate per 100,000",2.8,2021
 Rates,"US Rate per 100,000",3.6,2021
-Totals,Total.Fatalities,504,2022
+Totals,Total Fatalities,504,2022
 Rates,"California Rate per 100,000",2.9,2022
 Rates,"US Rate per 100,000",3.7,2022
-Totals,Total.Fatalities,439,2023
+Totals,Total Fatalities,439,2023
 Rates,"California Rate per 100,000",2.5,2023
 Rates,"US Rate per 100,000",3.5,2023
