@@ -3,10 +3,12 @@
 library(bslib)
 library(shiny)
 library(shinydashboard)
-library(gitcreds)
 library(ggplot2)
+library(plotly)
+library(gtable)
 
-load('Raw-Fatality-Data.Rda')
+# Load Data
+
 load('Segmented-Data.RData')
 
 ## Create Header
@@ -90,7 +92,7 @@ body <-
       list("Total Fatalities" = "totals", "Gender" = "gender", "Race" = "race", 
            "Employment Status" = "employment", "Fatal Event" = "event", "Industry" = "industry", "Occupation" = "occupation")
     ),
-    plotOutput("plot")
+    plotlyOutput("plot")
 
   )
 
@@ -99,25 +101,24 @@ body <-
 ui <- dashboardPage(header, sidebar, body)
 
 server <- function(input, output, session) {
-    output$plot <- renderPlot({
+    output$plot <- renderPlotly({
       if (input$select == 'totals')
-      {ggplot(data=df_totals, aes(x=year, y=count)) +
+      {ggplot(data=df_totals, aes(x=Year, y=Count)) +
         scale_x_continuous(breaks=1999:2023) +
-        geom_bar(stat="identity", fill="#9098CF") +
-        geom_line(linewidth=1, color = '#B94700') + 
-        geom_text(aes(label=count), vjust=4.0, color="black", size=4.5) +
+        geom_line(linewidth=1, color = '#25408F') + 
+        geom_point(size=3, color = '#25408F') + 
         theme(plot.title = element_text(hjust = 0.5)) +
         labs(
           x = "Year",
           y = "Fatal Occupational Injuries",
           title = "California Fatal Occupational Injuries Within the Scope of CFOI (1999-2023)")
     } else if (input$select == 'gender')
-      {ggplot(df_gender, aes(x = year, y = count, fill = label)) + 
-        geom_bar(stat = "identity", position="stack") +
-        geom_label(aes(label = count, size = 6), position = position_stack(vjust = 0.5), show.legend = FALSE) +
+      {ggplot(df_gender, aes(x = Year, y = Count, color = Label)) + 
+        geom_line(linewidth=1) + 
+        geom_point(size=3) + 
+        scale_color_manual(values=c('#25408F', '#4d6eb4')) +
         scale_y_continuous(limits = c(0,550), breaks=c(0, 100, 200, 300, 400, 500, 500)) + 
         scale_x_continuous(breaks=2009:2023) + 
-        scale_fill_manual(values=c("#FFD41C", "#6ECAC8")) + 
         theme(plot.title = element_text(hjust = 0.5)) +
         labs(
           x = "Year",
@@ -126,9 +127,8 @@ server <- function(input, output, session) {
           fill = 'Gender')
     }
       else if (input$select == 'race')
-      {ggplot(df_race,aes(x = year, y = count, group = label, color = label, pattern = label)) + 
+      {ggplot(df_race,aes(x = Year, y = Count, group = Label, color = Label, pattern = Label)) + 
           geom_line(linewidth=1) + 
-          geom_label_repel(aes(label = label), max.overlaps = 0, nudge_x = 1, na.rm = TRUE) + 
           geom_point(size=3) + 
           theme(plot.title = element_text(hjust = 0.5)) +
           coord_cartesian(xlim=c(2013,2023)) + 
@@ -140,9 +140,8 @@ server <- function(input, output, session) {
           ) + 
           theme(legend.position="bottom")}
       else if (input$select == 'employment')
-      {ggplot(df_employment, aes(x = year, y = count, fill = label)) + 
+      {ggplot(df_employment, aes(x = Year, y = Count, fill = Label)) + 
           geom_bar(stat = "identity", position="stack") +
-          geom_label(aes(label = count, size = 6), position = position_stack(vjust = 0.5), show.legend = FALSE) +
           scale_y_continuous(limits = c(0,550), breaks=c(0, 100, 200, 300, 400, 500, 500)) + 
           scale_x_continuous(breaks=2009:2023) + 
           scale_fill_manual(values=c("#FFD41C", "#6ECAC8")) + 
@@ -154,7 +153,7 @@ server <- function(input, output, session) {
             fill = 'Employment Status'
           )}
       else if (input$select == 'event')
-      {ggplot(df_causes,aes(x = year, y = count, group = label, color = label, pattern = label)) + 
+      {ggplot(df_causes,aes(x = Year, y = Count, color = Label)) + 
           geom_line(linewidth=1) + 
           geom_point(size=3) + 
           theme(plot.title = element_text(hjust = 0.5)) +
@@ -167,7 +166,7 @@ server <- function(input, output, session) {
           ) + 
           theme(legend.position="bottom")}
       else if (input$select == 'industry')
-      {ggplot(df_industry,aes(x = year, y = count, group = label, color = label, pattern = label)) + 
+      {ggplot(df_industry,aes(x = Year, y = Count, color = Label)) + 
           geom_line(linewidth=1) + 
           geom_point(size=3) + 
           theme(plot.title = element_text(hjust = 0.5)) +
@@ -180,7 +179,7 @@ server <- function(input, output, session) {
           ) + 
           theme(legend.position="bottom")}
       else if (input$select == 'occupation')
-      {ggplot(df_occupation,aes(x = year, y = count, group = label, color = label, pattern = label)) + 
+      {ggplot(df_occupation,aes(x = Year, y = Count, color = Label)) + 
           geom_line(linewidth=1) + 
           geom_point(size=3) + 
           theme(plot.title = element_text(hjust = 0.5)) +
