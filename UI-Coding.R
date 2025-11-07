@@ -105,6 +105,7 @@ server <- function(input, output, session) {
       if (input$select == 'totals')
       {ggplot(data=df_totals, aes(x=Year, y=Count)) +
         scale_x_continuous(breaks=1999:2023) +
+        scale_y_continuous(limits = c(0,600), breaks=c(0, 100, 200, 300, 400, 500, 600)) + 
         geom_line(linewidth=1, color = '#25408F') + 
         geom_point(size=3, color = '#25408F') + 
         theme(plot.title = element_text(hjust = 0.5)) +
@@ -117,7 +118,7 @@ server <- function(input, output, session) {
         geom_line(linewidth=1) + 
         geom_point(size=3) + 
         scale_color_manual(values=c('#25408F', '#4d6eb4')) +
-        scale_y_continuous(limits = c(0,550), breaks=c(0, 100, 200, 300, 400, 500, 500)) + 
+        scale_y_continuous(limits = c(0,600), breaks=c(0, 100, 200, 300, 400, 500, 600)) + 
         scale_x_continuous(breaks=2009:2023) + 
         theme(plot.title = element_text(hjust = 0.5)) +
         labs(
@@ -127,11 +128,13 @@ server <- function(input, output, session) {
           fill = 'Gender')
     }
       else if (input$select == 'race')
-      {ggplot(df_race,aes(x = Year, y = Count, group = Label, color = Label, pattern = Label)) + 
+      {ggplot(df_race,aes(x = Year, y = Count, color = Label)) + 
           geom_line(linewidth=1) + 
           geom_point(size=3) + 
           theme(plot.title = element_text(hjust = 0.5)) +
-          coord_cartesian(xlim=c(2013,2023)) + 
+          scale_color_manual(values=c('#25408F', '#503871', '#842f4d', '#af272f', '#c96029', '#e29623', '#ffd41c')) + 
+          scale_y_continuous(limits = c(0,300), breaks=c(0, 100, 200, 300)) + 
+          scale_x_continuous(breaks=2009:2023) + 
           labs(
             x = "Year",
             y = "Fatal Occupational Injuries",
@@ -140,11 +143,12 @@ server <- function(input, output, session) {
           ) + 
           theme(legend.position="bottom")}
       else if (input$select == 'employment')
-      {ggplot(df_employment, aes(x = Year, y = Count, fill = Label)) + 
-          geom_bar(stat = "identity", position="stack") +
-          scale_y_continuous(limits = c(0,550), breaks=c(0, 100, 200, 300, 400, 500, 500)) + 
+      {ggplot(df_employment, aes(x = Year, y = Count, color = Label)) + 
+          geom_line(linewidth=1) +
+          geom_point(size=3) +
+          scale_color_manual(values=c('#25408F', '#4d6eb4')) +
+          scale_y_continuous(limits = c(0,500), breaks=c(0, 100, 200, 300, 400, 500)) + 
           scale_x_continuous(breaks=2009:2023) + 
-          scale_fill_manual(values=c("#FFD41C", "#6ECAC8")) + 
           theme(plot.title = element_text(hjust = 0.5)) +
           labs(
             x = "Year",
@@ -156,7 +160,9 @@ server <- function(input, output, session) {
       {ggplot(df_causes,aes(x = Year, y = Count, color = Label)) + 
           geom_line(linewidth=1) + 
           geom_point(size=3) + 
+          scale_color_manual(values=c('#25408F', '#503871', '#842f4d', '#af272f', '#c96029', '#e29623', '#ffd41c')) + 
           theme(plot.title = element_text(hjust = 0.5)) +
+          scale_y_continuous(limits = c(0,200), breaks=c(0, 25, 50, 75, 100, 125, 150, 175, 200)) + 
           scale_x_continuous(breaks=2013:2023) + 
           labs(
             x = "Year",
@@ -169,7 +175,9 @@ server <- function(input, output, session) {
       {ggplot(df_industry,aes(x = Year, y = Count, color = Label)) + 
           geom_line(linewidth=1) + 
           geom_point(size=3) + 
+          scale_color_manual(values=c('#25408F', '#503871', '#673461', '#842f4d', '#982b3f', '#c96029', '#d27427', '#e29623', '#efb320', '#ffd41c')) + 
           theme(plot.title = element_text(hjust = 0.5)) +
+          scale_y_continuous(limits = c(0,200), breaks=c(0, 25, 50, 75, 100, 125, 150, 175, 200)) + 
           scale_x_continuous(breaks=2013:2023) + 
           labs(
             x = "Year",
@@ -182,7 +190,9 @@ server <- function(input, output, session) {
       {ggplot(df_occupation,aes(x = Year, y = Count, color = Label)) + 
           geom_line(linewidth=1) + 
           geom_point(size=3) + 
+          scale_color_manual(values=c('#25408F', '#503871', '#673461', '#953f4d', '#c96029', '#d27427', '#e29623', '#ffd41c')) + 
           theme(plot.title = element_text(hjust = 0.5)) +
+          scale_y_continuous(limits = c(0,200), breaks=c(0, 25, 50, 75, 100, 125, 150, 175, 200)) + 
           scale_x_continuous(breaks=2013:2023) + 
           labs(
             x = "Year",
