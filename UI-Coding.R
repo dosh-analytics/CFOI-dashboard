@@ -6,6 +6,8 @@ library(shinydashboard)
 library(ggplot2)
 library(plotly)
 library(gtable)
+library(gt)
+library(dplyr)
 
 # Load Data
 
@@ -89,10 +91,11 @@ body <-
     selectizeInput(
       "select",
       "Select Data Filtered By:",
-      list("Total Fatalities" = "totals", "Gender" = "gender", "Race" = "race", 
+      list("Total Fatalities" = "totals", "Gender" = "gender", "Race" = "race", "Age" = "age",
            "Employment Status" = "employment", "Fatal Event" = "event", "Industry" = "industry", "Occupation" = "occupation")
     ),
-    plotlyOutput("plot")
+    plotlyOutput("plot"),
+    gt_output("table")
 
   )
 
@@ -140,6 +143,21 @@ server <- function(input, output, session) {
             y = "Fatal Occupational Injuries",
             color = "",
             title = "California Fatal Occupational Injuries Within the Scope of CFOI, by Race/Ethnicity (2013-2023)"
+          ) + 
+          theme(legend.position="bottom")}
+      else if (input$select == 'age')
+      {ggplot(df_age,aes(x = Year, y = Count, color = Label)) + 
+          geom_line(linewidth=1) + 
+          geom_point(size=3) + 
+          theme(plot.title = element_text(hjust = 0.5)) +
+          scale_color_manual(values=c('#25408F', '#503871', '#842f4d', '#af272f', '#c96029', '#e29623', '#ffd41c')) + 
+          scale_y_continuous(limits = c(0,150), breaks=c(0, 50, 100, 150)) + 
+          scale_x_continuous(breaks=2009:2023) + 
+          labs(
+            x = "Year",
+            y = "Fatal Occupational Injuries",
+            color = "",
+            title = "California Fatal Occupational Injuries Within the Scope of CFOI, by Age (2013-2023)"
           ) + 
           theme(legend.position="bottom")}
       else if (input$select == 'employment')
@@ -201,8 +219,51 @@ server <- function(input, output, session) {
             title = "California Fatal Occupational Injuries Within the Scope of CFOI, by Occupation (2013-2023)"
           ) + 
           theme(legend.position="bottom")}
+    })
+    output$table <- render_gt({
+      if (input$select == 'totals')
+      {df_totals |>
+          gt(rowname_col = 'Year') |>
+          cols_hide('class') |>
+          tab_header(title = 'California Fatal Occupational Injuries (1999-2023)')
+      }
+      else if (input$select == 'gender')
+        {df_gender |>
+          gt(rowname_col = 'Year') |>
+          cols_hide('class') |>
+          tab_header(title = 'California Fatal Occupational Injuries by Gender')}
+      else if(input$select == 'race')
+      {df_race |>
+          gt(rowname_col = 'Year') |>
+          cols_hide('class') |>
+          tab_header(title = 'California Fatal Occupational Injuries by Race/Ethnicity')}
+      else if(input$select == 'age')
+      {df_age |>
+          gt(rowname_col = 'Year') |>
+          cols_hide('class') |>
+          tab_header(title = 'California Fatal Occupational Injuries by Age')}
+      else if(input$select == 'employment')
+        {df_employment |>
+            gt(rowname_col = 'Year') |>
+            cols_hide('class') |>
+            tab_header(title = 'California Fatal Occupational Injuries by Employment Status')}
+      else if(input$select == 'event')
+      {df_causes |>
+          gt(rowname_col = 'Year') |>
+          cols_hide('class') |>
+          tab_header(title = 'California Fatal Occupational Injuries by Event')}
+      else if(input$select == 'industry')
+      {df_industry |>
+          gt(rowname_col = 'Year') |>
+          cols_hide('class') |>
+          tab_header(title = 'California Fatal Occupational Injuries by Industry')}
+      else if(input$select == 'occupation')
+      {df_occupation |>
+          gt(rowname_col = 'Year') |>
+          cols_hide('class') |>
+          tab_header(title = 'California Fatal Occupational Injuries by Occupation')}
     })}
 
-
+      
 shinyApp(ui, server)
 
