@@ -413,12 +413,24 @@
 
             <div class="table-container">
                 <h3 id="table-title">California Fatal Occupational Injuries (1999-2023)</h3>
+                <div style="display:flex;gap:12px;align-items:center;margin-bottom:12px;">
+                    <label for="sortField" style="font-weight:700;color:#333;">Sort:</label>
+                    <select id="sortField">
+                        <option value="Year">Year</option>
+                        <option value="Label">Category</option>
+                        <option value="Count">Count</option>
+                    </select>
+                    <select id="sortOrder">
+                        <option value="desc">Descending</option>
+                        <option value="asc">Ascending</option>
+                    </select>
+                </div>
                 <table id="dataTable">
                     <thead>
                         <tr>
-                            <th>Year</th>
-                            <th id="table-col-label">Category</th>
-                            <th>Count</th>
+                            <th id="th-year" style="cursor:pointer;">Year</th>
+                            <th id="table-col-label" style="cursor:pointer;">Category</th>
+                            <th id="th-count" style="cursor:pointer;">Count</th>
                         </tr>
                     </thead>
                     <tbody id="tableBody"></tbody>

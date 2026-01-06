@@ -12,6 +12,8 @@ const colorPalette = {
 let globalData = [];
 let currentTab = 'totals';
 let chartInstance = null;
+let currentSortField = 'Year';
+let currentSortOrder = 'desc';
 
 // Initialize dashboard
 async function initDashboard() {
@@ -21,9 +23,77 @@ async function initDashboard() {
     // Setup event listeners
     setupTabListeners();
     setupResetButton();
+    setupTableSortControls();
+    setupTableHeaderSorting();
     
     // Render initial view
     renderView('totals');
+}
+
+// Setup table sort controls
+function setupTableSortControls() {
+    const sortField = document.getElementById('sortField');
+    const sortOrder = document.getElementById('sortOrder');
+    if (!sortField || !sortOrder) return;
+
+    sortField.value = currentSortField;
+    sortOrder.value = currentSortOrder;
+
+    sortField.addEventListener('change', () => {
+        currentSortField = sortField.value;
+        renderTable(dataLoader.filterData(globalData, { class: getClassForTab(currentTab) }));
+    });
+
+    sortOrder.addEventListener('change', () => {
+        currentSortOrder = sortOrder.value;
+        renderTable(dataLoader.filterData(globalData, { class: getClassForTab(currentTab) }));
+    });
+}
+
+function getClassForTab(tab) {
+    switch(tab) {
+        case 'totals': return 'Totals';
+        case 'gender': return 'Gender';
+        case 'race': return 'Race';
+        case 'age': return 'Age';
+        case 'employment': return 'Employee_Status';
+        case 'event': return 'Causes';
+        case 'industry': return 'Industry';
+        case 'occupation': return 'Occupation';
+        default: return '';
+    }
+}
+
+// Setup clickable table header sorting (toggles order on repeated clicks)
+function setupTableHeaderSorting() {
+    const thYear = document.getElementById('th-year');
+    const thLabel = document.getElementById('table-col-label');
+    const thCount = document.getElementById('th-count');
+    if (!thYear || !thLabel || !thCount) return;
+
+    function applyHeaderClick(element, field) {
+        element.style.cursor = 'pointer';
+        element.addEventListener('click', () => {
+            if (currentSortField === field) {
+                currentSortOrder = currentSortOrder === 'asc' ? 'desc' : 'asc';
+            } else {
+                currentSortField = field;
+                currentSortOrder = 'desc';
+            }
+
+            // update select controls if present
+            const sf = document.getElementById('sortField');
+            const so = document.getElementById('sortOrder');
+            if (sf) sf.value = currentSortField;
+            if (so) so.value = currentSortOrder;
+
+            renderTable(dataLoader.filterData(globalData, { class: getClassForTab(currentTab) }));
+        });
+    }
+
+    applyHeaderClick(thYear, 'Year');
+    applyHeaderClick(thLabel, 'Label');
+    applyHeaderClick(thCount, 'Count');
 }
 
 // Setup tab navigation
@@ -74,14 +144,14 @@ function renderView(tab) {
             
         case 'race':
             data = dataLoader.filterData(globalData, { class: 'Race' });
-            title = 'California Fatal Occupational Injuries by Race/Ethnicity (2013-2023)';
+            title = 'California Fatal Occupational Injuries by Race/Ethnicity (2009-2023)';
             colors = colorPalette.multiColor;
             renderMultiLineChart(data, title, colors);
             break;
             
         case 'age':
             data = dataLoader.filterData(globalData, { class: 'Age' });
-            title = 'California Fatal Occupational Injuries by Age Group (2009-2023)';
+            title = 'California Fatal Occupational Injuries by Age Group (2013-2023)';
             colors = colorPalette.multiColor;
             renderMultiLineChart(data, title, colors);
             break;
@@ -185,7 +255,7 @@ function renderLineChart(data, title, colors) {
             scales: {
                 y: {
                     beginAtZero: true,
-                    max: 500,
+                    max: 700,
                     ticks: {
                         font: { size: 12, weight: 'bold' }
                     },
@@ -304,10 +374,25 @@ function renderTable(data) {
     const tbody = document.getElementById('tableBody');
     tbody.innerHTML = '';
     
-    // Sort data by year descending, then by label
+    // Sort according to current sort controls
     const sortedData = [...data].sort((a, b) => {
-        if (a.Year !== b.Year) return b.Year - a.Year;
-        return a.Label.localeCompare(b.Label);
+        const field = currentSortField || 'Year';
+        const order = currentSortOrder || 'desc';
+        let av = a[field];
+        let bv = b[field];
+
+        // ensure numeric comparison for Year and Count
+        if (field === 'Year' || field === 'Count') {
+            av = Number(av) || 0;
+            bv = Number(bv) || 0;
+            return order === 'asc' ? av - bv : bv - av;
+        }
+
+        // string comparison for Label
+        av = String(av || '');
+        bv = String(bv || '');
+        const cmp = av.localeCompare(bv);
+        return order === 'asc' ? cmp : -cmp;
     });
     
     sortedData.forEach(d => {
