@@ -215,7 +215,8 @@ function renderMultiLineChart(data, title, colors) {
     
     // Group data by label
     const grouped = dataLoader.groupByLabel(data);
-    const labels = data.map(d => d.Year);
+    // Use unique, sorted years for the x-axis to avoid duplicate year labels
+    const labels = [...new Set(data.map(d => d.Year))].sort((a, b) => a - b);
     const uniqueLabels = dataLoader.getUniqueValues(data, 'Label');
     
     // Create datasets
