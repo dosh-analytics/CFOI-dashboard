@@ -5,8 +5,8 @@ const colorPalette = {
     accent: '#FFD41C',
     light: '#9098CF',
     gender: ['#FFD41C', '#6ECAC8'],
-    race: ['#9D9FA2', '#9098CF', '#F2EEDD', '#00A8E0', '#6ECAC8', '#94C83D', '#FFD41C', '#FF69B4'],
-    multiColor: ['#25408F', '#503871', '#673461', '#842f4d', '#af272f', '#c96029', '#e29623', '#ffd41c']
+    race: ['#E69F00', '#56B4E9', '#009E73', '#F0E442', '#0072B2', '#D55E00', '#CC79A7', '#000000'],
+    multiColor: ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#7f7f7f']
 };
 
 let globalData = [];
@@ -41,11 +41,13 @@ function setupTableSortControls() {
 
     sortField.addEventListener('change', () => {
         currentSortField = sortField.value;
+        updateTableHeaderArrows();
         renderTable(dataLoader.filterData(globalData, { class: getClassForTab(currentTab) }));
     });
 
     sortOrder.addEventListener('change', () => {
         currentSortOrder = sortOrder.value;
+        updateTableHeaderArrows();
         renderTable(dataLoader.filterData(globalData, { class: getClassForTab(currentTab) }));
     });
 }
@@ -62,6 +64,30 @@ function getClassForTab(tab) {
         case 'occupation': return 'Occupation';
         default: return '';
     }
+}
+
+// Update table headers with sort arrows
+function updateTableHeaderArrows() {
+    const thYear = document.getElementById('th-year');
+    const thLabel = document.getElementById('table-col-label');
+    const thCount = document.getElementById('th-count');
+    
+    if (!thYear || !thLabel || !thCount) return;
+
+    // Get base text for each header (remove any existing arrows)
+    const getText = (th) => th.innerHTML.replace(/\s*[▲▼↕]/g, '');
+    
+    const yearText = getText(thYear);
+    const labelText = getText(thLabel);
+    const countText = getText(thCount);
+
+    // Add appropriate arrows to all columns
+    const directionArrow = currentSortOrder === 'asc' ? ' ▲' : ' ▼';
+    const neutralArrow = ' ↕';
+
+    thYear.innerHTML = yearText + (currentSortField === 'Year' ? directionArrow : neutralArrow);
+    thLabel.innerHTML = labelText + (currentSortField === 'Label' ? directionArrow : neutralArrow);
+    thCount.innerHTML = countText + (currentSortField === 'Count' ? directionArrow : neutralArrow);
 }
 
 // Setup clickable table header sorting (toggles order on repeated clicks)
@@ -87,6 +113,7 @@ function setupTableHeaderSorting() {
             if (sf) sf.value = currentSortField;
             if (so) so.value = currentSortOrder;
 
+            updateTableHeaderArrows();
             renderTable(dataLoader.filterData(globalData, { class: getClassForTab(currentTab) }));
         });
     }
@@ -94,6 +121,9 @@ function setupTableHeaderSorting() {
     applyHeaderClick(thYear, 'Year');
     applyHeaderClick(thLabel, 'Label');
     applyHeaderClick(thCount, 'Count');
+    
+    // Initial arrow display
+    updateTableHeaderArrows();
 }
 
 // Setup tab navigation
