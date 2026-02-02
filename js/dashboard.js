@@ -9,6 +9,29 @@ const colorPalette = {
     multiColor: ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#7f7f7f']
 };
 
+// Helper: convert HSL to HEX (used to generate additional distinct colors)
+function hslToHex(h, s, l) {
+    s /= 100;
+    l /= 100;
+    const a = s * Math.min(l, 1 - l);
+    const f = n => {
+        const k = (n + h / 30) % 12;
+        const color = l - a * Math.max(-1, Math.min(k - 3, Math.min(9 - k, 1)));
+        return Math.round(255 * color).toString(16).padStart(2, '0');
+    };
+    return `#${f(0)}${f(8)}${f(4)}`;
+}
+
+// Generate `count` distinct colors using HSL hues. Optional offsetHue shifts the palette.
+function generateColors(count, offsetHue = 0) {
+    const colors = [];
+    for (let i = 0; i < count; i++) {
+        const hue = Math.round((offsetHue + (i * 360 / count)) % 360);
+        colors.push(hslToHex(hue, 65, 50));
+    }
+    return colors;
+}
+
 let globalData = [];
 let currentTab = 'totals';
 let chartInstance = null;
@@ -307,6 +330,12 @@ function renderLineChart(data, title, colors) {
     
     // Update summary stats
     updateSummaryStats(data);
+
+    // Hide legend instruction for single-series charts
+    const instr = document.getElementById('chart-instruction');
+    if (instr) {
+        instr.style.display = 'none';
+    }
 }
 
 // Render line chart for multiple series
@@ -318,6 +347,15 @@ function renderMultiLineChart(data, title, colors) {
     // Use unique, sorted years for the x-axis to avoid duplicate year labels
     const labels = [...new Set(data.map(d => d.Year))].sort((a, b) => a - b);
     const uniqueLabels = dataLoader.getUniqueValues(data, 'Label');
+
+    // Build a palette with enough distinct colors for all categories
+    const palette = [...colors];
+    if (palette.length < uniqueLabels.length) {
+        // offset slightly to avoid overlapping hues with the original palette
+        const offsetHue = Math.floor(Math.random() * 360);
+        const extra = generateColors(uniqueLabels.length - palette.length, offsetHue);
+        palette.push(...extra);
+    }
     
     // Create datasets
     const datasets = uniqueLabels.map((label, idx) => {
@@ -327,13 +365,14 @@ function renderMultiLineChart(data, title, colors) {
             countsByYear[d.Year] = d.Count;
         });
         
+        const color = palette[idx % palette.length];
         return {
             label: label,
             data: labels.map(year => countsByYear[year] || 0),
-            borderColor: colors[idx % colors.length],
-            backgroundColor: colors[idx % colors.length] + '20',
+            borderColor: color,
+            backgroundColor: color + '20',
             borderWidth: 2.5,
-            pointBackgroundColor: colors[idx % colors.length],
+            pointBackgroundColor: color,
             pointBorderColor: '#fff',
             pointBorderWidth: 2,
             pointRadius: 4,
@@ -397,6 +436,13 @@ function renderMultiLineChart(data, title, colors) {
     
     // Update summary stats
     updateSummaryStats(data);
+
+    // Show legend instruction for multi-series charts (legend is clickable in Chart.js)
+    const instr = document.getElementById('chart-instruction');
+    if (instr) {
+        instr.style.display = 'block';
+        instr.innerHTML = '<b>Note:</b> The chart includes many categories. Click any category in the legend to remove it from view and better focus on the categories most relevant to you.';
+    }
 }
 
 // Render table
