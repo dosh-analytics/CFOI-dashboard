@@ -183,56 +183,56 @@ function renderView(tab) {
     switch(tab) {
         case 'totals':
             data = dataLoader.filterData(globalData, { class: 'Totals' });
-            title = 'California Fatal Occupational Injuries Within the Scope of CFOI (1999-2023)';
+            title = 'California Fatal Occupational Injuries Within the Scope of CFOI (1999-2024)';
             colors = [colorPalette.primary];
             renderLineChart(data, title, colors);
             break;
             
         case 'gender':
             data = dataLoader.filterData(globalData, { class: 'Gender' });
-            title = 'California Fatal Occupational Injuries by Gender (2009-2023)';
+            title = 'California Fatal Occupational Injuries by Gender (2009-2024)';
             colors = colorPalette.gender;
             renderMultiLineChart(data, title, colors);
             break;
             
         case 'race':
             data = dataLoader.filterData(globalData, { class: 'Race' });
-            title = 'California Fatal Occupational Injuries by Race/Ethnicity (2009-2023)';
+            title = 'California Fatal Occupational Injuries by Race/Ethnicity (2009-2024)';
             colors = colorPalette.multiColor;
             renderMultiLineChart(data, title, colors);
             break;
             
         case 'age':
             data = dataLoader.filterData(globalData, { class: 'Age' });
-            title = 'California Fatal Occupational Injuries by Age Group (2013-2023)';
+            title = 'California Fatal Occupational Injuries by Age Group (2013-2024)';
             colors = colorPalette.multiColor;
             renderMultiLineChart(data, title, colors);
             break;
             
         case 'employment':
             data = dataLoader.filterData(globalData, { class: 'Employee_Status' });
-            title = 'California Fatal Occupational Injuries by Employment Status (2009-2023)';
+            title = 'California Fatal Occupational Injuries by Employment Status (2009-2024)';
             colors = colorPalette.gender;
             renderMultiLineChart(data, title, colors);
             break;
             
         case 'event':
             data = dataLoader.filterData(globalData, { class: 'Causes' });
-            title = 'California Fatal Occupational Injuries by Fatal Event (2013-2023)';
+            title = 'California Fatal Occupational Injuries by Fatal Event (2013-2024)';
             colors = colorPalette.multiColor;
             renderMultiLineChart(data, title, colors);
             break;
             
         case 'industry':
             data = dataLoader.filterData(globalData, { class: 'Industry' });
-            title = 'California Fatal Occupational Injuries by Industry (2013-2023)';
+            title = 'California Fatal Occupational Injuries by Industry (2013-2024)';
             colors = colorPalette.multiColor;
             renderMultiLineChart(data, title, colors);
             break;
             
         case 'occupation':
             data = dataLoader.filterData(globalData, { class: 'Occupation' });
-            title = 'California Fatal Occupational Injuries by Occupation (2013-2023)';
+            title = 'California Fatal Occupational Injuries by Occupation (2013-2024)';
             colors = colorPalette.multiColor;
             renderMultiLineChart(data, title, colors);
             break;
