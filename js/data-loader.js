@@ -24,7 +24,8 @@ const fatality_data = [
     { class: 'Totals', Label: 'Totals', Count: 430, Year: 2020 },
     { class: 'Totals', Label: 'Totals', Count: 433, Year: 2021 },
     { class: 'Totals', Label: 'Totals', Count: 437, Year: 2022 },
-    { class: 'Totals', Label: 'Totals', Count: 439, Year: 2023 }
+    { class: 'Totals', Label: 'Totals', Count: 439, Year: 2023 },
+    { class: 'Totals', Label: 'Totals', Count: 419, Year: 2024 }
 ];
 
 // Function to parse CSV string
