@@ -76,6 +76,13 @@ Age,35 to 44 years,90,2023
 Age,45 to 54 years,95,2023
 Age,55 to 64 years,82,2023
 Age,65 years and older,52,2023
+Age,16 to 19 years,5,2024
+Age,20 to 24 years,25,2024
+Age,25 to 34 years,76,2024
+Age,35 to 44 years,77,2024
+Age,45 to 54 years,89,2024
+Age,55 to 64 years,89,2024
+Age,65 years and older,58,2024
 Gender,Men,380,2009
 Gender,Women,29,2009
 Gender,Men,299,2010
@@ -106,6 +113,8 @@ Gender,Men,469,2022
 Gender,Women,35,2022
 Gender,Men,402,2023
 Gender,Women,37,2023
+Gender,Men,384,2024
+Gender,Women,35,2024
 Race,Hispanic or Latino,161,2009
 Race,White (Non-Hispanic),176,2009
 Race,Asian,37,2009
@@ -211,6 +220,13 @@ Race,Black or African-American,28,2023
 Race,Native Hawaiian or Pacific Islander,0,2023
 Race,American Indian or Alaskan Native,0,2023
 Race,Other Races or Not Reported,0,2023
+Race,Hispanic or Latino,215,2024
+Race,White (Non-Hispanic),135,2024
+Race,Asian,41,2024
+Race,Black or African-American,23,2024
+Race,Native Hawaiian or Pacific Islander,0,2024
+Race,American Indian or Alaskan Native,0,2024
+Race,Other Races or Not Reported,0,2024
 Employee_Status,Wage and Salary Workers,340,2009
 Employee_Status,Self-Employed,69,2009
 Employee_Status,Wage and Salary Workers,255,2010
@@ -241,6 +257,8 @@ Employee_Status,Wage and Salary Workers,432,2022
 Employee_Status,Self-Employed,72,2022
 Employee_Status,Wage and Salary Workers,354,2023
 Employee_Status,Self-Employed,85,2023
+Employee_Status,Wage and Salary Workers,335,2024
+Employee_Status,Self-Employed,84,2024
 Causes,Transportation Incidents,138,2013
 Causes,Assault and Violent Acts,80,2013
 Causes,Contact with Objects or Equipment,61,2013
@@ -318,6 +336,13 @@ Causes,"Falls, Slips and Trips",79,2023
 Causes,Exposure to Harmful Substances,106,2023
 Causes,Fires and Explosions,0,2023
 Causes,Other,0,2023
+Causes,Transportation Incidents,114,2024
+Causes,Assault and Violent Acts,76,2024
+Causes,Contact with Objects or Equipment,0,2024
+Causes,"Falls, Slips and Trips",94,2024
+Causes,Exposure to Harmful Substances,83,2024
+Causes,Fires and Explosions,0,2024
+Causes,Other,0,2024
 Occupation,Transportation and Material Moving,108,2013
 Occupation,Construction and Extraction,64,2013
 Occupation,"Farming, Fishing, and Forestry",25,2013
@@ -406,6 +431,14 @@ Occupation,"Installation, Maintenance, and Repair/Production",39,2023
 Occupation,Professional and Related,79,2023
 Occupation,Protective Services,30,2023
 Occupation,Other Occupations,33,2023
+Occupation,Transportation and Material Moving,110,2024
+Occupation,Construction and Extraction,80,2024
+Occupation,"Farming, Fishing, and Forestry",24,2024
+Occupation,Building and Grounds Cleaning/Maintenance,39,2024
+Occupation,"Installation, Maintenance, and Repair/Production",29,2024
+Occupation,Professional and Related,66,2024
+Occupation,Protective Services,24,2024
+Occupation,Other Occupations,47,2024
 Industry,"Trade, Transportation, and Utilities",119,2013
 Industry,Construction,61,2013
 Industry,Professional and Business Services,50,2013
@@ -516,6 +549,16 @@ Industry,Manufacturing,21,2023
 Industry,Leisure and Hospitality,28,2023
 Industry,Educational and Health Services,15,2023
 Industry,Unclassified,18,2023
+Industry,"Trade, Transportation, and Utilities",108,2024
+Industry,Construction,81,2024
+Industry,Professional and Business Services,61,2024
+Industry,Government,45,2024
+Industry,Agriculture/Natural Resources,31,2024
+Industry,Other Non-Government Sectors,15,2024
+Industry,Manufacturing,24,2024
+Industry,Leisure and Hospitality,28,2024
+Industry,Educational and Health Services,8,2024
+Industry,Unclassified,18,2024
 Totals,Total Fatalities,602,1999
 Rates,"California Rate per 100,000",3.6,1999
 Rates,"US Rate per 100,000",4.5,1999
@@ -591,3 +634,6 @@ Rates,"US Rate per 100,000",3.7,2022
 Totals,Total Fatalities,439,2023
 Rates,"California Rate per 100,000",2.5,2023
 Rates,"US Rate per 100,000",3.5,2023
+Totals,Total Fatalities,419,2024
+Rates,"California Rate per 100,000",2.4,2024
+Rates,"US Rate per 100,000",3.3,2024
