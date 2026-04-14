@@ -71,8 +71,15 @@ function parseCSV(csv) {
 // Function to load data from CSV file
 async function loadDataFromCSV() {
     try {
-        const response = await fetch('Raw_Fatality_Data.csv');
-        if (!response.ok) throw new Error('File not found');
+        // Construct the correct path for both local and GitHub Pages
+        const baseUrl = window.location.pathname.includes('/CFOI-dashboard/') 
+            ? '/CFOI-dashboard/' 
+            : './';
+        const csvPath = baseUrl + 'Raw_Fatality_Data.csv';
+        
+        console.log('Loading CSV from:', csvPath);
+        const response = await fetch(csvPath);
+        if (!response.ok) throw new Error('File not found: ' + csvPath);
         const csv = await response.text();
         const data = parseCSV(csv);
         return data.length > 0 ? data : fatality_data;

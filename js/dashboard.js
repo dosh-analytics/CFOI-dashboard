@@ -64,12 +64,20 @@ function setupYearRangeFilters() {
     const endSelect = document.getElementById('yearRangeEnd');
     const presetBtn = document.getElementById('preset-10yr-btn');
     
-    if (!startSelect || !endSelect || !presetBtn) return;
+    if (!startSelect || !endSelect || !presetBtn) {
+        console.error('Year filter elements not found in DOM');
+        return;
+    }
 
     // Get unique years from data and sort them
     const allYears = [...new Set(globalData.map(d => d.Year))].sort((a, b) => a - b);
     
-    if (allYears.length === 0) return;
+    if (allYears.length === 0) {
+        console.warn('No years found in data. globalData length:', globalData.length);
+        return;
+    }
+
+    console.log('Populating year filter with years:', allYears);
 
     // Populate dropdowns
     allYears.forEach(year => {
@@ -93,6 +101,8 @@ function setupYearRangeFilters() {
     endSelect.value = maxYear;
     yearRangeStart = defaultStartYear;
     yearRangeEnd = maxYear;
+
+    console.log('Year filter initialized. Start:', defaultStartYear, 'End:', maxYear);
 
     // Event listeners for year range changes
     startSelect.addEventListener('change', function() {
