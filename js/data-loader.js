@@ -1,21 +1,8 @@
+// Minimum year for data filtering (restrict to last 10 years)
+const MIN_YEAR = 2015;
+
 // Parse the CSV data embedded in the page or loaded from file
 const fatality_data = [
-    { class: 'Totals', Label: 'Totals', Count: 394, Year: 1999 },
-    { class: 'Totals', Label: 'Totals', Count: 369, Year: 2000 },
-    { class: 'Totals', Label: 'Totals', Count: 388, Year: 2001 },
-    { class: 'Totals', Label: 'Totals', Count: 396, Year: 2002 },
-    { class: 'Totals', Label: 'Totals', Count: 414, Year: 2003 },
-    { class: 'Totals', Label: 'Totals', Count: 414, Year: 2004 },
-    { class: 'Totals', Label: 'Totals', Count: 412, Year: 2005 },
-    { class: 'Totals', Label: 'Totals', Count: 440, Year: 2006 },
-    { class: 'Totals', Label: 'Totals', Count: 448, Year: 2007 },
-    { class: 'Totals', Label: 'Totals', Count: 431, Year: 2008 },
-    { class: 'Totals', Label: 'Totals', Count: 433, Year: 2009 },
-    { class: 'Totals', Label: 'Totals', Count: 436, Year: 2010 },
-    { class: 'Totals', Label: 'Totals', Count: 445, Year: 2011 },
-    { class: 'Totals', Label: 'Totals', Count: 452, Year: 2012 },
-    { class: 'Totals', Label: 'Totals', Count: 431, Year: 2013 },
-    { class: 'Totals', Label: 'Totals', Count: 437, Year: 2014 },
     { class: 'Totals', Label: 'Totals', Count: 437, Year: 2015 },
     { class: 'Totals', Label: 'Totals', Count: 460, Year: 2016 },
     { class: 'Totals', Label: 'Totals', Count: 468, Year: 2017 },
@@ -56,12 +43,16 @@ function parseCSV(csv) {
         parts.push(current.trim().replace(/^"|"$/g, ''));
         
         if (parts.length >= 4) {
-            data.push({
-                class: parts[0],
-                Label: parts[1],
-                Count: parseInt(parts[2]) || 0,
-                Year: parseInt(parts[3]) || 0
-            });
+            const year = parseInt(parts[3]) || 0;
+            // Only include data from MIN_YEAR onwards
+            if (year >= MIN_YEAR) {
+                data.push({
+                    class: parts[0],
+                    Label: parts[1],
+                    Count: parseInt(parts[2]) || 0,
+                    Year: year
+                });
+            }
         }
     }
     
@@ -124,5 +115,6 @@ window.dataLoader = {
     filterData,
     groupByLabel,
     groupByYear,
-    fatality_data
+    fatality_data,
+    MIN_YEAR
 };
