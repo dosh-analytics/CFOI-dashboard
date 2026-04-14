@@ -37,11 +37,16 @@ let currentTab = 'totals';
 let chartInstance = null;
 let currentSortField = 'Year';
 let currentSortOrder = 'desc';
+let yearRangeStart = null;
+let yearRangeEnd = null;
 
 // Initialize dashboard
 async function initDashboard() {
     // Load data
     globalData = await dataLoader.loadDataFromCSV();
+    
+    // Setup year range filters with default 10-year view
+    setupYearRangeFilters();
     
     // Setup event listeners
     setupTabListeners();
@@ -51,6 +56,81 @@ async function initDashboard() {
     
     // Render initial view
     renderView('totals');
+}
+
+// Setup year range filters
+function setupYearRangeFilters() {
+    const startSelect = document.getElementById('yearRangeStart');
+    const endSelect = document.getElementById('yearRangeEnd');
+    const presetBtn = document.getElementById('preset-10yr-btn');
+    
+    if (!startSelect || !endSelect || !presetBtn) return;
+
+    // Get unique years from data and sort them
+    const allYears = [...new Set(globalData.map(d => d.Year))].sort((a, b) => a - b);
+    
+    if (allYears.length === 0) return;
+
+    // Populate dropdowns
+    allYears.forEach(year => {
+        const optionStart = document.createElement('option');
+        optionStart.value = year;
+        optionStart.textContent = year;
+        startSelect.appendChild(optionStart);
+
+        const optionEnd = document.createElement('option');
+        optionEnd.value = year;
+        optionEnd.textContent = year;
+        endSelect.appendChild(optionEnd);
+    });
+
+    // Set default to last 10 years
+    const minYear = Math.min(...allYears);
+    const maxYear = Math.max(...allYears);
+    const defaultStartYear = Math.max(minYear, maxYear - 9); // 10-year range
+    
+    startSelect.value = defaultStartYear;
+    endSelect.value = maxYear;
+    yearRangeStart = defaultStartYear;
+    yearRangeEnd = maxYear;
+
+    // Event listeners for year range changes
+    startSelect.addEventListener('change', function() {
+        yearRangeStart = parseInt(this.value);
+        // Ensure start is not after end
+        if (yearRangeStart > yearRangeEnd) {
+            endSelect.value = yearRangeStart;
+            yearRangeEnd = yearRangeStart;
+        }
+        renderView(currentTab);
+    });
+
+    endSelect.addEventListener('change', function() {
+        yearRangeEnd = parseInt(this.value);
+        // Ensure end is not before start
+        if (yearRangeEnd < yearRangeStart) {
+            startSelect.value = yearRangeEnd;
+            yearRangeStart = yearRangeEnd;
+        }
+        renderView(currentTab);
+    });
+
+    // Preset button for last 10 years
+    presetBtn.addEventListener('click', function() {
+        startSelect.value = defaultStartYear;
+        endSelect.value = maxYear;
+        yearRangeStart = defaultStartYear;
+        yearRangeEnd = maxYear;
+        renderView(currentTab);
+    });
+}
+
+// Filter data by year range
+function filterDataByYearRange(data) {
+    if (yearRangeStart === null || yearRangeEnd === null) {
+        return data;
+    }
+    return data.filter(d => d.Year >= yearRangeStart && d.Year <= yearRangeEnd);
 }
 
 // Setup table sort controls
@@ -65,13 +145,17 @@ function setupTableSortControls() {
     sortField.addEventListener('change', () => {
         currentSortField = sortField.value;
         updateTableHeaderArrows();
-        renderTable(dataLoader.filterData(globalData, { class: getClassForTab(currentTab) }));
+        let data = dataLoader.filterData(globalData, { class: getClassForTab(currentTab) });
+        data = filterDataByYearRange(data);
+        renderTable(data);
     });
 
     sortOrder.addEventListener('change', () => {
         currentSortOrder = sortOrder.value;
         updateTableHeaderArrows();
-        renderTable(dataLoader.filterData(globalData, { class: getClassForTab(currentTab) }));
+        let data = dataLoader.filterData(globalData, { class: getClassForTab(currentTab) });
+        data = filterDataByYearRange(data);
+        renderTable(data);
     });
 }
 
@@ -137,7 +221,9 @@ function setupTableHeaderSorting() {
             if (so) so.value = currentSortOrder;
 
             updateTableHeaderArrows();
-            renderTable(dataLoader.filterData(globalData, { class: getClassForTab(currentTab) }));
+            let data = dataLoader.filterData(globalData, { class: getClassForTab(currentTab) });
+            data = filterDataByYearRange(data);
+            renderTable(data);
         });
     }
 
@@ -168,6 +254,21 @@ function setupTabListeners() {
 // Setup reset button
 function setupResetButton() {
     document.getElementById('reset-btn').addEventListener('click', function() {
+        // Reset year filter to default 10-year view
+        const allYears = [...new Set(globalData.map(d => d.Year))].sort((a, b) => a - b);
+        const minYear = Math.min(...allYears);
+        const maxYear = Math.max(...allYears);
+        const defaultStartYear = Math.max(minYear, maxYear - 9);
+        
+        const startSelect = document.getElementById('yearRangeStart');
+        const endSelect = document.getElementById('yearRangeEnd');
+        
+        startSelect.value = defaultStartYear;
+        endSelect.value = maxYear;
+        yearRangeStart = defaultStartYear;
+        yearRangeEnd = maxYear;
+        
+        // Reset to totals tab
         document.querySelectorAll('.tab-btn')[0].click();
     });
 }
@@ -183,59 +284,92 @@ function renderView(tab) {
     switch(tab) {
         case 'totals':
             data = dataLoader.filterData(globalData, { class: 'Totals' });
-            title = 'California Fatal Occupational Injuries Within the Scope of CFOI (1999-2024)';
             colors = [colorPalette.primary];
-            renderLineChart(data, title, colors);
             break;
             
         case 'gender':
             data = dataLoader.filterData(globalData, { class: 'Gender' });
-            title = 'California Fatal Occupational Injuries by Gender (2009-2024)';
             colors = colorPalette.gender;
-            renderMultiLineChart(data, title, colors);
             break;
             
         case 'race':
             data = dataLoader.filterData(globalData, { class: 'Race' });
-            title = 'California Fatal Occupational Injuries by Race/Ethnicity (2009-2024)';
             colors = colorPalette.multiColor;
-            renderMultiLineChart(data, title, colors);
             break;
             
         case 'age':
             data = dataLoader.filterData(globalData, { class: 'Age' });
-            title = 'California Fatal Occupational Injuries by Age Group (2013-2024)';
             colors = colorPalette.multiColor;
-            renderMultiLineChart(data, title, colors);
             break;
             
         case 'employment':
             data = dataLoader.filterData(globalData, { class: 'Employee_Status' });
-            title = 'California Fatal Occupational Injuries by Employment Status (2009-2024)';
             colors = colorPalette.gender;
-            renderMultiLineChart(data, title, colors);
             break;
             
         case 'event':
             data = dataLoader.filterData(globalData, { class: 'Causes' });
-            title = 'California Fatal Occupational Injuries by Fatal Event (2013-2024)';
             colors = colorPalette.multiColor;
-            renderMultiLineChart(data, title, colors);
             break;
             
         case 'industry':
             data = dataLoader.filterData(globalData, { class: 'Industry' });
-            title = 'California Fatal Occupational Injuries by Industry (2013-2024)';
             colors = colorPalette.multiColor;
-            renderMultiLineChart(data, title, colors);
             break;
             
         case 'occupation':
             data = dataLoader.filterData(globalData, { class: 'Occupation' });
-            title = 'California Fatal Occupational Injuries by Occupation (2013-2024)';
             colors = colorPalette.multiColor;
-            renderMultiLineChart(data, title, colors);
             break;
+    }
+    
+    // Apply year range filter
+    data = filterDataByYearRange(data);
+    
+    // Determine actual year range from the filtered data
+    let actualStartYear = 1999;
+    let actualEndYear = 2024;
+    if (data.length > 0) {
+        const years = data.map(d => d.Year).sort((a, b) => a - b);
+        actualStartYear = years[0];
+        actualEndYear = years[years.length - 1];
+    }
+    
+    // Build title with actual data year range
+    switch(tab) {
+        case 'totals':
+            title = `California Fatal Occupational Injuries Within the Scope of CFOI (${actualStartYear}-${actualEndYear})`;
+            break;
+        case 'gender':
+            title = `California Fatal Occupational Injuries by Gender (${actualStartYear}-${actualEndYear})`;
+            break;
+        case 'race':
+            title = `California Fatal Occupational Injuries by Race/Ethnicity (${actualStartYear}-${actualEndYear})`;
+            break;
+        case 'age':
+            title = `California Fatal Occupational Injuries by Age Group (${actualStartYear}-${actualEndYear})`;
+            break;
+        case 'employment':
+            title = `California Fatal Occupational Injuries by Employment Status (${actualStartYear}-${actualEndYear})`;
+            break;
+        case 'event':
+            title = `California Fatal Occupational Injuries by Fatal Event (${actualStartYear}-${actualEndYear})`;
+            break;
+        case 'industry':
+            title = `California Fatal Occupational Injuries by Industry (${actualStartYear}-${actualEndYear})`;
+            break;
+        case 'occupation':
+            title = `California Fatal Occupational Injuries by Occupation (${actualStartYear}-${actualEndYear})`;
+            break;
+    }
+    
+    // Determine if we should render line chart or multi-line chart
+    const isMultiSeries = tab !== 'totals';
+    
+    if (isMultiSeries) {
+        renderMultiLineChart(data, title, colors);
+    } else {
+        renderLineChart(data, title, colors);
     }
     
     // Update titles
