@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DIR Workplace Fatality Dashboard</title>
+    <!-- BEGIN Code for DIR site -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
@@ -34,6 +35,7 @@
             font-weight: 700;
             font-size: 2.5rem;
             margin-bottom: 10px;
+            color: #fff;
         }
 
         .header p {
@@ -48,7 +50,7 @@
             height: auto;
         }
 
-        .container {
+        .container.dash {
             max-width: 1400px;
             margin: 0 auto;
             padding: 30px 20px;
@@ -353,15 +355,17 @@
             color: #25408F;
         }
     </style>
+    <!-- END Code for DIR site -->
 </head>
 <body>
-    <div class="header">
+    <!-- BEGIN Code for DIR site -->
+    <div class="header mt-3">  <!-- added "mt-3" for DIR site -->
         <h1>California Workplace Fatality Dashboard</h1>
         <p>California Fatal Occupational Injuries Within the Scope of CFOI</p>
         <p style="font-size: 0.95rem; margin-top: 10px;">Data from 1999-2024</p>
     </div>
 
-    <div class="container">
+    <div class="container dash"> <!-- added "dash" for DIR site -->
         <!-- Key Performance Indicators -->
         <div class="kpi-section">
             <div class="kpi-card">
@@ -456,6 +460,7 @@
             </div>
         </div>
     </div>
+    <!-- END Code for DIR Site -->
 
     <div class="footer">
         <p><strong>Source:</strong> California Department of Industrial Relations (DIR), Division of Occupational Safety and Health (DOSH)</p>
